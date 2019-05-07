@@ -3,11 +3,10 @@ import {useState, useEffect} from 'react'
 export default path => {
   const [ data, setData ] = useState([])
   const [ loaded, setLoaded ] = useState(false)
-  const URL_API = process.env.REACT_APP_API_URL || 'http://localhost:5000'
 
   useEffect(() => {
     async function useFetch() {
-      const response = await fetch(`${URL_API}${path}`)
+      const response = await fetch(`${process.env.REACT_APP_API_URL}${path}`)
       const data = await response.json()
   
       setData(data)
@@ -15,7 +14,7 @@ export default path => {
     }
 
     useFetch()
-  }, [URL_API, path])
+  }, [path])
 
   return [
     data,

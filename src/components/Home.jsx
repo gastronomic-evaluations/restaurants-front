@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../App.scss'
 import useFetch from '../hooks/useDataFetch'
 
@@ -16,6 +17,8 @@ function Home() {
             </div>
           ))
         }
+
+        <Link to="/create">Create</Link>
       </header>
     </div>
   )

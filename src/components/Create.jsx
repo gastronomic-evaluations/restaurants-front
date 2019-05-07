@@ -1,23 +1,19 @@
 import React from 'react'
-import logo from '../logo.svg'
+import { Field } from 'formik'
+
+import AbstractForm from './AbstractForm'
+// import { FormikContext } from '../contexts/contexts'
 import '../App.scss'
 
 function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Create
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <AbstractForm method="POST" initialValues={{title: '', rating: ''}}>
+          <Field name="title" placeholder="title" />
+          <Field name="rating" placeholder="rating" />
+          <button type="submit">Enviar</button>
+        </AbstractForm>
       </header>
     </div>
   )
