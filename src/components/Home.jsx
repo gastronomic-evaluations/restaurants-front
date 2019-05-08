@@ -1,5 +1,4 @@
 import React from 'react'
-import '../App.scss'
 import useFetch from '../hooks/useDataFetch'
 
 function Home() {

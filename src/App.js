@@ -13,6 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
 import Route from './routes/Route'
+import './App.scss'
 
 const styles = theme => ({
   text: {
@@ -21,7 +22,7 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2,
   },
   paper: {
-    paddingBottom: 50,
+    paddingBottom: 100,
   },
   list: {
     marginBottom: theme.spacing.unit * 2,
