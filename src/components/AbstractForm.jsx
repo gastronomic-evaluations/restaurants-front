@@ -8,16 +8,16 @@ const AbstractForm = ({ method, children, initialValues }) => {
 
   const onSubmit = async (values, { setSubmitting }) => {
     history.goBack()
-    console.log(JSON.stringify(values, null, 2))
+    
     const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants`, {
       method,
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(values, null, 2)
     })
 
     const data = await response.json()
 
     console.log(data)
-
     setSubmitting(false)
   }
 

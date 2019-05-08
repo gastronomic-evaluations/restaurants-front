@@ -11,10 +11,14 @@ function Home() {
       <header className="App-header">
         {
           data.map(({ _id, title, rating }) => (
-            <div key={_id}>
-              <h2>{title}</h2>
-              <span>rating: {rating}</span>
-            </div>
+            title
+              ? (
+                  <div key={_id}>
+                    <h2>{title}</h2>
+                    <span>rating: {rating}</span>
+                  </div>
+                )
+              : null
           ))
         }
 
