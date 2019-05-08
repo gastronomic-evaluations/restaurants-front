@@ -23,6 +23,7 @@ const styles = theme => ({
   },
   paper: {
     paddingBottom: 100,
+    background: 'transparent !important'
   },
   list: {
     marginBottom: theme.spacing.unit * 2,
