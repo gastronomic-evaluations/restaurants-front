@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Formik, Form, Field } from 'formik'
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input'
+import Button from '@material-ui/core/Button'
 
 import { RouteContext } from '../contexts/contexts'
 
@@ -9,7 +9,6 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
   const { history } = useContext(RouteContext)
 
   const onSubmit = async (values, { setSubmitting }) => {
-    
     const response = await fetch(`${process.env.REACT_APP_API_URL}${pathname}`, {
       method,
       headers: {'Content-Type': 'application/json'},
