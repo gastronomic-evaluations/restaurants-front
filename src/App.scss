@@ -36,3 +36,23 @@ form {
 a {
   text-decoration: none;
 }
+
+.loader {
+  border: 3px solid rgba(63, 81, 181, 0.2);
+  border-top-color: #3f51b5;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -1.5em;
+  margin-top: -1.5em;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

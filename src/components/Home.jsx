@@ -1,63 +1,41 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom'
-
+import StarRate from '@material-ui/icons/StarRate';
+import {RouteContext} from '../contexts/contexts'
 import useFetch from '../hooks/useDataFetch'
+import Loader from './Loader';
+
 
 function Home() {
-  const {data, setData, loaded} = useFetch('/restaurants')
-
-  const exclude = async id => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants/${id}`, {
-      method: 'DELETE'
-    })
-    
-    console.log(response)
-    const newData = data.filter(({_id}) => _id !== id )
-    setData(newData)
-  }
+  const {history} = useContext(RouteContext)
+  const {data, loaded} = useFetch('/restaurants')
   
-  return loaded && (
+  return loaded
+    ? (
     <div className="App">
       <header className="App-header">
         {
           data.map(({ _id, title, rating }) => (
             <Card key={_id} className="card">
               <CardActionArea>
-                <CardMedia
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
+                <CardContent onClick={() => history.push(`/restaurants/${_id}`)}>
                   <Typography gutterBottom variant="h5" component="h2">
                     { title }
                   </Typography>
                   <Typography component="p">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
+                    {Array(Math.floor(rating/2)).fill().map(()=>(<StarRate style={{color: '#fdbd39'}}/>))}
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  <Link to={`/${_id}`}>Editar</Link>
-                </Button>
-                <Button size="small" color="primary" onClick={ () => exclude(_id) }>
-                  Excluir
-                </Button>
-              </CardActions>
             </Card>
           ))
         }
       </header>
     </div>
-  )
+  ) : <Loader />
 }
 
 export default Home

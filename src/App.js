@@ -18,7 +18,8 @@ const styles = theme => ({
   paper: {
     paddingTop: 30,
     paddingBottom: 100,
-    background: 'transparent !important'
+    background: 'transparent !important',
+    minHeight: '100vh'
   },
   list: {
     marginBottom: theme.spacing.unit * 2,
