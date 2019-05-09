@@ -4,6 +4,7 @@ import { RouteContext } from '../contexts/contexts'
 
 const Home = lazy(() => import('../components/Home'))
 const Create = lazy(() => import('../components/Create'))
+const Edit = lazy(() => import('../components/Edit'))
 const Error404 = lazy(() => import('../components/Error404'))
 
 function getRouterComponent(Component) {
@@ -23,6 +24,7 @@ function Routes() {
         <Switch>
           <Route path='/' exact component={getRouterComponent(Home)} />
           <Route path="/create" exact component={getRouterComponent(Create)} />
+          <Route path="/:id" exact component={getRouterComponent(Edit)} />
           <Route component={getRouterComponent(Error404)} />
         </Switch>
       </Suspense>

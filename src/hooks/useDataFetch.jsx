@@ -16,9 +16,9 @@ export default path => {
     useFetch()
   }, [path])
 
-  return [
+  return {
     data,
     setData,
     loaded
-  ]
+  }
 }

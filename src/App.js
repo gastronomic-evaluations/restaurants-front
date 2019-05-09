@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Fab from '@material-ui/core/Fab';
@@ -16,12 +15,8 @@ import Route from './routes/Route'
 import './App.scss'
 
 const styles = theme => ({
-  text: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-  },
   paper: {
+    paddingTop: 30,
     paddingBottom: 100,
     background: 'transparent !important'
   },
@@ -55,9 +50,6 @@ function App(props) {
     <React.Fragment>
       <CssBaseline />
       <Paper square className={classes.paper}>
-        <Typography className={classes.text} variant="h5" gutterBottom>
-          Avaliações Gastronomicas
-        </Typography>
         <Route />
       </Paper>
       <AppBar position="fixed" color="primary" className={classes.appBar}>
