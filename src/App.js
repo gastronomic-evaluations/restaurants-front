@@ -1,79 +1,61 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Add from '@material-ui/icons/Add';
+import HomeIcon from '@material-ui/icons/Home';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Paper from '@material-ui/core/Paper';
-import Fab from '@material-ui/core/Fab';
-import MenuIcon from '@material-ui/icons/Menu';
-import AddIcon from '@material-ui/icons/Add';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
 import Route from './routes/Route'
 import './App.scss'
 
-const styles = theme => ({
+const styles = {
+  root: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    borderTop: '1px solid #ccc'
+  },
   paper: {
     paddingTop: 30,
     paddingBottom: 100,
     background: 'transparent !important',
     minHeight: '100vh'
   },
-  list: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-  subHeader: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  appBar: {
-    top: 'auto',
-    bottom: 0,
-  },
-  toolbar: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  fabButton: {
-    position: 'absolute',
-    zIndex: 1,
-    top: -30,
-    left: 0,
-    right: 0,
-    margin: '0 auto',
-  },
-});
-
-function App(props) {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <Paper square className={classes.paper}>
-        <Route />
-      </Paper>
-      <AppBar position="fixed" color="primary" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <div>
-            <IconButton color="inherit" onClick={ () => window.history.back() }>
-              <KeyboardArrowLeftIcon />
-            </IconButton>
-          </div>
-          <Fab color="secondary" aria-label="Add" className={classes.fabButton} onClick={() => window.location = '/#/restaurants/create' }>
-            <AddIcon />
-          </Fab>
-          <IconButton color="inherit" aria-label="Open drawer">
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </React.Fragment>
-  );
-}
-
-App.propTypes = {
-  classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(App);
+class App extends React.Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+
+    return (
+      <>
+        <Paper square className={classes.paper}>
+          <Route />
+        </Paper>
+        <BottomNavigation
+          value={value}
+          onChange={this.handleChange}
+          showLabels
+          className={classes.root}
+        >
+          <BottomNavigationAction label="Voltar" icon={<ChevronLeftIcon />} onClick={() => window.history.back()} />
+          <BottomNavigationAction label="Inicio" icon={<HomeIcon />} onClick={() => window.location = '/#/restaurants'} />
+          <BottomNavigationAction label="Criar" icon={<Add />} onClick={() => window.location = '/#/restaurants/create'} />
+        </BottomNavigation>
+      </>
+    );
+  }
+}
+
+export default withStyles(styles)(App)
