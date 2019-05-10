@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import useFetch from '../hooks/useDataFetch'
 import { RouteContext } from '../contexts/contexts';
@@ -27,24 +30,22 @@ function Detail() {
     <div className="App">
       <header className="App-header">
         <Card className="card">
-          <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h4" component="h2">
-                { data.title }
+          <CardContent>
+            <Typography gutterBottom variant="h4" component="h2">
+              { data.title }
+            </Typography>
+            <Typography color="textSecondary" gutterBottom>
+              Nota: { data.rating }
+            </Typography>
+            <Divider />
+            <Typography gutterBottom variant="h6" component="h3">
+                Observações
               </Typography>
-              <Typography color="textSecondary" gutterBottom>
-                Nota: { data.rating }
-              </Typography>
-              <Divider />
-              <Typography gutterBottom variant="h6" component="h3">
-                  Observações
-                </Typography>
-              <Typography component="p">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+            <Typography component="p">
+              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+              across all continents except Antarctica
+            </Typography>
+          </CardContent>
           <CardActions>
             <Button size="small" color="primary" onClick={ () => history.push(`/${match.params.id}`) }>
               Editar
@@ -54,6 +55,18 @@ function Detail() {
             </Button>
           </CardActions>
         </Card>
+        <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography><b>Detalhes</b></Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography align="left">
+              <p><b>Ocasião:</b> {data.ocasion}</p>
+              <p><b>Conhecido por:</b> {data.knowFor}</p>
+              <p><b>Fama:</b> {data.fame}</p>
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       </header>
     </div>
   ) : <Loader />

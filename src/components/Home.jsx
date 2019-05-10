@@ -18,15 +18,18 @@ function Home() {
     <div className="App">
       <header className="App-header">
         {
-          data.map(({ _id, title, rating }) => (
+          data.map(({ _id, title, rating, date }) => (
             <Card key={_id} className="card">
               <CardActionArea>
                 <CardContent onClick={() => history.push(`/restaurants/${_id}`)}>
                   <Typography gutterBottom variant="h5" component="h2">
                     { title }
                   </Typography>
+                  <Typography color="textSecondary" gutterBottom>
+                    { new Date(date).toLocaleDateString("en-US") }
+                  </Typography>
                   <Typography component="p">
-                    {Array(Math.floor(rating/2)).fill().map(()=>(<StarRate style={{color: '#fdbd39'}}/>))}
+                    {rating && Array(Math.floor(rating/2)).fill().map(()=>(<StarRate style={{color: '#fdbd39'}}/>))}
                   </Typography>
                 </CardContent>
               </CardActionArea>
