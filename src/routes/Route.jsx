@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { RouteContext } from '../contexts/contexts'
 import Loader from '../components/Loader'
 
@@ -25,10 +25,11 @@ function Routes() {
     <Router>
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route path='/' exact component={getRouterComponent(Home)} />
-          <Route path="/create" exact component={getRouterComponent(Create)} />
-          <Route path="/restaurants/:id" exact component={getRouterComponent(Detail)} />
-          <Route path="/:id" exact component={getRouterComponent(Edit)} />
+          <Route path='/' exact render={() => <Redirect to='/restaurants' />} />
+          <Route path='/restaurants' exact component={getRouterComponent(Home)} />
+          <Route path="/restaurants/create" exact component={getRouterComponent(Create)} />
+          <Route path="/restaurants/details/:id" exact component={getRouterComponent(Detail)} />
+          <Route path="/restaurants/:id" exact component={getRouterComponent(Edit)} />
           <Route component={getRouterComponent(Error404)} />
         </Switch>
       </Suspense>

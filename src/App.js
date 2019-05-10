@@ -60,7 +60,7 @@ function App(props) {
               <KeyboardArrowLeftIcon />
             </IconButton>
           </div>
-          <Fab color="secondary" aria-label="Add" className={classes.fabButton} onClick={() => window.location = '/#/create' }>
+          <Fab color="secondary" aria-label="Add" className={classes.fabButton} onClick={() => window.location = '/#/restaurants/create' }>
             <AddIcon />
           </Fab>
           <IconButton color="inherit" aria-label="Open drawer">

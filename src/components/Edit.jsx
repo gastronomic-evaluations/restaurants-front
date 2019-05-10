@@ -11,7 +11,6 @@ function Edit() {
   return loaded && (
     <div className="App">
       <header className="App-header">
-        {console.log(data)}
         <AbstractForm
           method="PUT"
           pathname={`/restaurants/${match.params.id}`}

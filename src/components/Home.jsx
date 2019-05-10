@@ -13,32 +13,33 @@ function Home() {
   const {history} = useContext(RouteContext)
   const {data, loaded} = useFetch('/restaurants')
   
-  return loaded
-    ? (
+  return (
     <div className="App">
       <header className="App-header">
         {
-          data.map(({ _id, title, rating, date }) => (
-            <Card key={_id} className="card">
-              <CardActionArea>
-                <CardContent onClick={() => history.push(`/restaurants/${_id}`)}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    { title }
-                  </Typography>
-                  <Typography color="textSecondary" gutterBottom>
-                    { new Date(date).toLocaleDateString("en-US") }
-                  </Typography>
-                  <Typography component="p">
-                    {rating && Array(Math.floor(rating/2)).fill().map(()=>(<StarRate style={{color: '#fdbd39'}}/>))}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))
+          loaded
+          ? data.map(({ _id, title, rating, date }) => (
+              <Card key={_id} className="card">
+                <CardActionArea>
+                  <CardContent onClick={() => history.push(`/restaurants/details/${_id}`)}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      { title }
+                    </Typography>
+                    <Typography color="textSecondary" gutterBottom>
+                      { new Date(date).toLocaleDateString("en-US") }
+                    </Typography>
+                    <Typography component="p">
+                      {rating && Array(Math.floor(rating/2)).fill().map((current, index)=>(<StarRate key={index} style={{color: '#fdbd39'}}/>))}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))
+          : <Loader />
         }
       </header>
     </div>
-  ) : <Loader />
+  )
 }
 
 export default Home
