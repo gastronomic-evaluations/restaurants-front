@@ -25,6 +25,7 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
         <Input name="knowFor" label="Conhecido por" />
         <Input name="fame" label="Fama" />
         <Input name="ocasion" label="Ocasião" />
+        <Input name="observations" label="Observações" multiline={true} rows={5} />
 
         <Button className="send" type="submit" variant="contained" color="primary">
           Salvar
