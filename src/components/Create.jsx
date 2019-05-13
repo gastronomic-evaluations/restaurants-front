@@ -6,10 +6,32 @@ function Home() {
   const initialValues = {
     title: '',
     rating: '',
-    knowFor:  '',
-    fame: '',
-    ocasion: ''
+    knowFor: '',
+    ocasion: '',
+    observations: '',
+    waitTime: '',
+    date: '',
+    ratings: {
+      service: undefined,
+      environment: undefined,
+      food: undefined,
+      price: undefined
+    },
+    address: {
+      street: '',
+      number: undefined,
+      zipcode: '',
+      city: '',
+      state: '',
+      country: ''
+    },
+    recomendations: {
+      askNext: '',
+      neverAsk: '',
+      worth: undefined
+    }
   }
+
 
   return (
     <div className="App">

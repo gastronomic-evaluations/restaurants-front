@@ -51,18 +51,66 @@ function Detail() {
             </Button>
           </CardActions>
         </Card>
+        
         <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography><b>Detalhes</b></Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography align="left">
-              <span style={style}><b>Ocasião:</b> {data.ocasion}</span>
-              <span style={style}><b>Conhecido por:</b> {data.knowFor}</span>
-              <span style={style}><b>Fama:</b> {data.fame}</span>
+              { data.waitTime && <span style={style}><b>Tempo de espera:</b> {data.waitTime}</span> }
+              { data.ocasion && <span style={style}><b>Ocasião:</b> {data.ocasion}</span> }
+              { data.knowFor && <span style={style}><b>Conhecido por:</b> {data.knowFor}</span> }
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
+
+        {data.ratings &&
+        <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography><b>Notas</b></Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography align="left">
+              { data.ratings.service && <span style={style}><b>Nota do serviço:</b> {data.ratings.service}</span> }
+              { data.ratings.environment && <span style={style}><b>Nota do ambiente:</b> {data.ratings.environment}</span> }
+              { data.ratings.price && <span style={style}><b>Nota do preço:</b> {data.ratings.price}</span> }
+              { data.ratings.food && <span style={style}><b>Nota da comida:</b> {data.ratings.food}</span> }
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        }
+
+        {data.recomendations &&
+        <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography><b>Recomendações</b></Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography align="left">
+              { data.recomendations.askNext && <span style={style}><b>Pedir nas próximas:</b> {data.recomendations.askNext}</span> }
+              { data.recomendations.neverAsk && <span style={style}><b>Nunca pedir:</b> {data.recomendations.neverAsk}</span> }
+              { data.recomendations.hasOwnProperty('worth') && <span style={style}><b>Vale a pena:</b> {data.recomendations.worth ? 'Sim' : 'Não'}</span> }
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        }
+
+        {data.address &&
+        <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography><b>Endereço</b></Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography align="left">
+              { data.address.zipcode && <span style={style}><b>Logradouro:</b> {data.address.street} n: {data.address.number} - {data.address.zipcode}</span> }
+              { data.address.city && <span style={style}><b>Cidade:</b> {data.address.city}</span> }
+              { data.address.state && <span style={style}><b>Estado:</b> {data.address.state}</span> }
+              { data.address.country && <span style={style}><b>Pais:</b> {data.address.country}</span> }
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        }
       </header>
     </div>
   ) : <Loader />
