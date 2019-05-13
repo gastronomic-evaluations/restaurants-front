@@ -15,6 +15,7 @@ const styles = {
     width: '100%',
     position: 'fixed',
     bottom: 0,
+    paddingBottom: 15,
     borderTop: '1px solid #ccc'
   },
   paper: {
