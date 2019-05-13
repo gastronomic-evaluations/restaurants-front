@@ -2,7 +2,9 @@ import React, { useContext } from 'react'
 import { Formik, Form } from 'formik'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
 import Input from './Input'
+import AbstractRadio from './AbstractRadio'
 
 import { RouteContext } from '../contexts/contexts'
 import { publish } from '../services/restaurantService'
@@ -11,10 +13,10 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
   const { history } = useContext(RouteContext)
 
   const onSubmit = (values, { setSubmitting }) => {
-    const data = publish({method, values, pathname})
-    console.log(data)
+    // const data = publish({method, values, pathname})
+    console.log(values)
     
-    history.goBack()
+    // history.goBack()
     setSubmitting(false)
   }
 
@@ -45,7 +47,7 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
 
         <Input name="recomendations.askNext" label="Pedir nas próximas" />
         <Input name="recomendations.neverAsk" label="Nunca pedir" />
-        <Input name="recomendations.worth" label="Vale a pena?" />
+        <AbstractRadio name="recomendations.worth" label="Vale a pena?" />
 
         <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
           Notas
@@ -55,6 +57,13 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
         <Input name="ratings.environment" label="Nota para o ambiente" />
         <Input name="ratings.price" label="Nota para o preço" />
         <Input name="ratings.food" label="Nota para a comida" />
+
+        <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
+          Conveniência
+        </Typography>
+        <AbstractRadio name="convenience.wifi" label="Wifi" />
+
+        <Divider />
 
         <Button className="send" type="submit" variant="contained" color="primary">
           Salvar
