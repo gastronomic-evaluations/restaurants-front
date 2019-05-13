@@ -111,6 +111,19 @@ function Detail() {
           </ExpansionPanelDetails>
         </ExpansionPanel>
         }
+
+        {data.convenience &&
+        <ExpansionPanel style={{width: '90%', margin: '0 5%'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography><b>Conveniencia</b></Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography align="left">
+              { data.convenience.wifi && <span style={style}><b>Wifi:</b>{data.convenience.wifi ? 'Sim' : 'Não'}</span> }
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        }
       </header>
     </div>
   ) : <Loader />

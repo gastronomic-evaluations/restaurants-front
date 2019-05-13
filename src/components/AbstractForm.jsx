@@ -13,10 +13,10 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
   const { history } = useContext(RouteContext)
 
   const onSubmit = (values, { setSubmitting }) => {
-    // const data = publish({method, values, pathname})
-    console.log(values)
+    const data = publish({method, values, pathname})
+    console.log(data)
     
-    // history.goBack()
+    history.goBack()
     setSubmitting(false)
   }
 
