@@ -1,11 +1,10 @@
 import React from 'react'
 
-import AbstractForm from './AbstractForm'
+import AbstractForm from './forms/AbstractForm'
 
 function Home() {
   const initialValues = {
     title: '',
-    rating: '',
     knowFor: '',
     ocasion: '',
     observations: '',

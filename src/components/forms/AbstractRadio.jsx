@@ -3,7 +3,7 @@ import { string } from 'prop-types'
 import { Field } from 'formik'
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import { FormikContext } from '../contexts/contexts'
+import { FormikContext } from '../../contexts/contexts'
 
 const AbstractRadio = ({ name, label }) => {
   const {values} = useContext(FormikContext)

@@ -7,35 +7,47 @@ import {RouteContext} from '../contexts/contexts'
 import useFetch from '../hooks/useDataFetch'
 import Loader from './Loader';
 import Stars from  './Starts'
+import formatDate from '../utils/formatDate/formatDate'
 
+function CardHome({ restaurant }) {
+  const { _id, title, date, ratings } = restaurant
+  const {history} = useContext(RouteContext)
+
+  const goToDetail = () => history.push(`/restaurants/details/${_id}`)
+  const getRating = ({food, environment, price, service}) => {
+    return (food + environment + price + service) / 4
+  }
+
+
+  return (
+    <Card className="card">
+      <CardActionArea>
+        <CardContent onClick={goToDetail}>
+          <Typography gutterBottom variant="h5" component="h2">
+            { title }
+          </Typography>
+          <Typography color="textSecondary" gutterBottom>
+            { formatDate(date) }
+          </Typography>
+          <Typography component="p">
+            <Stars check={ratings} amount={getRating(ratings)} />
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  )
+}
 
 function Home() {
-  const {history} = useContext(RouteContext)
-  const {data, loaded} = useFetch('/restaurants')
+  const {data: restaurants, loaded} = useFetch('/restaurants')
   
   return (
     <div className="App">
       <header className="App-header">
         {
           loaded
-          ? data.map(({ _id, title, rating, date }) => (
-              <Card key={_id} className="card">
-                <CardActionArea>
-                  <CardContent onClick={() => history.push(`/restaurants/details/${_id}`)}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      { title }
-                    </Typography>
-                    <Typography color="textSecondary" gutterBottom>
-                      { new Date(date).toLocaleDateString("en-US") }
-                    </Typography>
-                    <Typography component="p">
-                      <Stars check={rating} amount={rating / 2} />
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            ))
-          : <Loader />
+            ? restaurants.map(restaurant => (<CardHome key={restaurant._id} restaurant={restaurant} />))
+            : <Loader />
         }
       </header>
     </div>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import AbstractForm from './AbstractForm'
+import AbstractForm from './forms/AbstractForm'
 import useFetch from '../hooks/useDataFetch'
 import {RouteContext} from '../contexts/contexts'
 

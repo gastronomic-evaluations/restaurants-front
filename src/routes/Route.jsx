@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 const Home = lazy(() => import('../components/Home'))
 const Create = lazy(() => import('../components/Create'))
 const Edit = lazy(() => import('../components/Edit'))
-const Detail = lazy(() => import('../components/Detail'))
+const Detail = lazy(() => import('../components/Detail/Detail'))
 const Error404 = lazy(() => import('../components/Error404'))
 
 
