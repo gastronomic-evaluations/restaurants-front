@@ -11,15 +11,13 @@ export default path => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}${path}`)
       const data = await response.json()
 
-      if(mounted) {
-        setData(data)
-      }
+      if(mounted) { setData(data) }
       setLoaded(true)
     }
 
     useFetch()
 
-    return () => {
+    return function cleanup() {
       mounted = false
     }
   }, [path])
