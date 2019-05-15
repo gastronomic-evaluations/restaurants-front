@@ -10,25 +10,26 @@ function Home() {
     ocasion: '',
     observations: '',
     waitTime: '',
+    address: '',
     date: '',
     ratings: {
-      service: undefined,
-      environment: undefined,
-      food: undefined,
-      price: undefined
-    },
-    address: {
-      street: '',
-      number: undefined,
-      zipcode: '',
-      city: '',
-      state: '',
-      country: ''
+      service: '',
+      environment: '',
+      food: '',
+      price: ''
     },
     recomendations: {
       askNext: '',
       neverAsk: '',
-      worth: undefined
+      worth: false
+    },
+    convenience: {
+      wifi: false,
+      goodWines: false,
+      music: false,
+      goodForGroups: false,
+      funny: false,
+      goodForCouples: false
     }
   }
 

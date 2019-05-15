@@ -3,9 +3,9 @@ import { Formik, Form } from 'formik'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
+
 import Input from './Input'
 import AbstractRadio from './AbstractRadio'
-
 import { RouteContext } from '../contexts/contexts'
 import { publish } from '../services/restaurantService'
 
@@ -28,18 +28,18 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
         <Input name="knowFor" label="Conhecido por" />
         <Input name="ocasion" label="Ocasião" />
         <Input name="waitTime" label="Tempo de espera" />
+        <Input name="address" label="Endereço" />
         <Input name="observations" label="Observações" multiline={true} rows={5} />
 
         <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
-          Endereço
+          Notas
         </Typography>
-
-        <Input name="address.street" label="logradouro" />
-        <Input name="address.number" label="Número" />
-        <Input name="address.zipcode" label="CEP" />
-        <Input name="address.city" label="Cidade" />
-        <Input name="address.state" label="Estado" />
-        <Input name="address.country" label="Pais" />
+        <div style={{display: 'flex'}}>
+          <Input name="ratings.service" label="Serviço" fullWidth={false} />
+          <Input name="ratings.environment" label="Lugar" fullWidth={false} />
+          <Input name="ratings.price" label="Preço" fullWidth={false} />
+          <Input name="ratings.food" label="Comida" fullWidth={false} />
+        </div>
 
         <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
           Recomendações
@@ -50,18 +50,15 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
         <AbstractRadio name="recomendations.worth" label="Vale a pena?" />
 
         <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
-          Notas
-        </Typography>
-
-        <Input name="ratings.service" label="Nota para o serviço" />
-        <Input name="ratings.environment" label="Nota para o ambiente" />
-        <Input name="ratings.price" label="Nota para o preço" />
-        <Input name="ratings.food" label="Nota para a comida" />
-
-        <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
           Conveniência
         </Typography>
+
         <AbstractRadio name="convenience.wifi" label="Wifi" />
+        <AbstractRadio name="convenience.goodWines" label="Bons vinhos" />
+        <AbstractRadio name="convenience.music" label="Música" />
+        <AbstractRadio name="convenience.goodForGroups" label="Bom para grupos" />
+        <AbstractRadio name="convenience.funny" label="Divertido" />
+        <AbstractRadio name="convenience.goodForCouples" label="Bom para casais" />
 
         <Divider />
 

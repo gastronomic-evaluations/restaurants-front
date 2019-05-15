@@ -3,13 +3,13 @@ import {Field} from 'formik'
 import TextField from '@material-ui/core/TextField'
 import { string } from 'prop-types'
 
-const Input = ({ name, label, multiline, rows }) => {
+const Input = ({ name, label, fullWidth, multiline, rows }) => {
   return (
     <Field name={name} render={({ field }) => (
       <TextField
         label={label}
         className="input"
-        fullWidth
+        fullWidth={fullWidth}
         multiline={multiline}
         rows={rows}
         inputProps={{...field}}
@@ -20,7 +20,8 @@ const Input = ({ name, label, multiline, rows }) => {
 
 Input.defaultProps = {
   multiline: false,
-  rows: 1
+  rows: 1,
+  fullWidth: true
 }
 
 Input.propTypes = {

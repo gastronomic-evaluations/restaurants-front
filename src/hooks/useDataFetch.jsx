@@ -3,17 +3,25 @@ import {useState, useEffect} from 'react'
 export default path => {
   const [ data, setData ] = useState([])
   const [ loaded, setLoaded ] = useState(false)
-
+  
   useEffect(() => {
+    let mounted = true
+    
     async function useFetch() {
       const response = await fetch(`${process.env.REACT_APP_API_URL}${path}`)
       const data = await response.json()
-  
-      setData(data)
+
+      if(mounted) {
+        setData(data)
+      }
       setLoaded(true)
     }
 
     useFetch()
+
+    return () => {
+      mounted = false
+    }
   }, [path])
 
   return {

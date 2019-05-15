@@ -3,10 +3,10 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import StarRate from '@material-ui/icons/StarRate';
 import {RouteContext} from '../contexts/contexts'
 import useFetch from '../hooks/useDataFetch'
 import Loader from './Loader';
+import Stars from  './Starts'
 
 
 function Home() {
@@ -29,7 +29,7 @@ function Home() {
                       { new Date(date).toLocaleDateString("en-US") }
                     </Typography>
                     <Typography component="p">
-                      {rating && Array(Math.floor(rating/2)).fill().map((current, index)=>(<StarRate key={index} style={{color: '#fdbd39'}}/>))}
+                      <Stars check={rating} amount={rating / 2} />
                     </Typography>
                   </CardContent>
                 </CardActionArea>
