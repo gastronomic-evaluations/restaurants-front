@@ -1,6 +1,6 @@
 import React from 'react'
-import {Field} from 'formik'
-import TextField from '@material-ui/core/TextField'
+import { Field } from 'formik'
+import { TextField } from '@material-ui/core'
 import { string } from 'prop-types'
 
 const Input = ({ name, label, fullWidth, multiline, rows }) => {

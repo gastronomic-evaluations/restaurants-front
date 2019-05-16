@@ -1,10 +1,12 @@
 import React from 'react'
-import Divider from '@material-ui/core/Divider'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import Typography from '@material-ui/core/Typography'
+import { ExpandMore, Place } from '@material-ui/icons'
+import {
+  Divider,
+  Typography,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails
+} from '@material-ui/core'
 
 function MoreInfo({ data }) {
   const { waitTime, ocasion, knowFor, address, recomendations } = data
@@ -19,7 +21,7 @@ function MoreInfo({ data }) {
 
   return (
     <ExpansionPanel style={style.panel}>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
         <Typography><b>Mais informações</b></Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
@@ -27,7 +29,7 @@ function MoreInfo({ data }) {
           { waitTime && <span style={style.line}><b>Tempo de espera:</b> {waitTime}</span> }
           { ocasion && <span style={style.line}><b>Ocasião:</b> {ocasion}</span> }
           { knowFor && <span style={style.line}><b>Conhecido por:</b> {knowFor}</span> }
-          { address && <span style={style.line}><b>Endereço:</b> {address}</span> }
+          { address && <span style={style.line}><b>Endereço:</b> {address} <a className="primary-color" href={`https://maps.google.com/?q=${address}`}><Place /></a></span> }
 
           <Divider className="divider" />
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import DoneIcon from '@material-ui/icons/Done'
-import Chip from '@material-ui/core/Chip'
+import { Done } from '@material-ui/icons'
+import { Chip } from '@material-ui/core'
 import { bool, string } from 'prop-types'
 
 const Convenience = ({check, label}) => (
@@ -10,7 +10,7 @@ const Convenience = ({check, label}) => (
         <Chip
           label={label}
           color="primary"
-          deleteIcon={<DoneIcon />}
+          deleteIcon={<Done />}
           style={{ margin: '0 2px 5px' }}
         />
       )

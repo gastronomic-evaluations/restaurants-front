@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import {Card, CardActionArea, CardContent, Typography} from '@material-ui/core'
+
 import {RouteContext} from '../contexts/contexts'
 import useFetch from '../hooks/useDataFetch'
-import Loader from './Loader';
+import Loader from './Loader'
 import Stars from  './Starts'
 import formatDate from '../utils/formatDate/formatDate'
 

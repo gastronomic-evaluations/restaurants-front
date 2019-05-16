@@ -1,11 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Add from '@material-ui/icons/Add';
-import HomeIcon from '@material-ui/icons/Home';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Paper from '@material-ui/core/Paper';
+import { BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core'
+import { Add, Home, ChevronLeft } from '@material-ui/icons'
 
 import Route from './routes/Route'
 import './App.scss'
@@ -50,8 +46,8 @@ class App extends React.Component {
           showLabels
           className={classes.root}
         >
-          <BottomNavigationAction label="Voltar" icon={<ChevronLeftIcon />} onClick={() => window.history.back()} />
-          <BottomNavigationAction label="Inicio" icon={<HomeIcon />} onClick={() => window.location = '/#/restaurants'} />
+          <BottomNavigationAction label="Voltar" icon={<ChevronLeft />} onClick={() => window.history.back()} />
+          <BottomNavigationAction label="Inicio" icon={<Home />} onClick={() => window.location = '/#/restaurants'} />
           <BottomNavigationAction label="Criar" icon={<Add />} onClick={() => window.location = '/#/restaurants/create'} />
         </BottomNavigation>
       </>

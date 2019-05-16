@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import { Formik, Form } from 'formik'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
+import {Button, Typography, Divider} from '@material-ui/core'
 
 import AbstractInput from './AbstractInput'
 import AbstractRadio from './AbstractRadio'

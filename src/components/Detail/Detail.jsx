@@ -1,11 +1,5 @@
 import React, { useContext } from 'react'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import Button from '@material-ui/core/Button'
-import EditIcon from '@material-ui/icons/Edit'
-import DeleteIcon from '@material-ui/icons/Delete'
+import { Card, CardContent, Typography, Divider, Button } from '@material-ui/core'
 
 import useFetch from '../../hooks/useDataFetch'
 import { RouteContext } from '../../contexts/contexts'
