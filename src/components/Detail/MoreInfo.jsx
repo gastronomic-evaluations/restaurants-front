@@ -29,7 +29,7 @@ function MoreInfo({ data }) {
           { waitTime && <span style={style.line}><b>Tempo de espera:</b> {waitTime}</span> }
           { ocasion && <span style={style.line}><b>Ocasião:</b> {ocasion}</span> }
           { knowFor && <span style={style.line}><b>Conhecido por:</b> {knowFor}</span> }
-          { address && <span style={style.line}><b>Endereço:</b> {address} <a className="primary-color" href={`https://maps.google.com/?q=${address}`}><Place /></a></span> }
+          { address && <span style={style.line}><b>Endereço:</b> {address} <a className="primary-color" target="_blank" href={`https://maps.google.com/?q=${address}`}><Place /></a></span> }
 
           <Divider className="divider" />
 
