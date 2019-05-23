@@ -24,10 +24,12 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
         <Form>
           <FormikContext.Provider value={formikProps}>
             <AbstractInput name="title" label="Nome do restaurante" />
+            <AbstractInput name="date" label="Data" />
             <AbstractInput name="knowFor" label="Conhecido por" />
             <AbstractInput name="ocasion" label="Ocasião" />
             <AbstractInput name="waitTime" label="Tempo de espera" />
             <AbstractInput name="address" label="Endereço" />
+            <AbstractInput name="order" label="Pedido" multiline={true} rows={3} />
             <AbstractInput name="observations" label="Observações" multiline={true} rows={5} />
 
             <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
@@ -58,6 +60,13 @@ const AbstractForm = ({ method, initialValues, pathname }) => {
             <AbstractRadio name="convenience.goodForGroups" label="Bom para grupos" />
             <AbstractRadio name="convenience.funny" label="Divertido" />
             <AbstractRadio name="convenience.goodForCouples" label="Bom para casais" />
+            <AbstractRadio name="convenience.airConditioning" label="Ar-condicionado" />
+            <AbstractRadio name="convenience.acceptReserve" label="Reservas" />
+            <AbstractRadio name="convenience.acceptCards" label="Aceita Cartões" />
+            <AbstractRadio name="convenience.goodDrinks" label="Drinks" />
+            <AbstractRadio name="convenience.openLate" label="Aberto até tarde" />
+            <AbstractRadio name="convenience.outdoorTables" label="Ar livre" />
+            <AbstractRadio name="convenience.parking" label="Estacionamento" />
 
             <Divider />
 

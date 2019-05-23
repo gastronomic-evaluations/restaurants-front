@@ -5,12 +5,12 @@ import AbstractForm from './forms/AbstractForm'
 function Home() {
   const initialValues = {
     title: '',
+    date: '',
     knowFor: '',
     ocasion: '',
     observations: '',
     waitTime: '',
     address: '',
-    date: '',
     ratings: {
       service: '',
       environment: '',
@@ -28,7 +28,14 @@ function Home() {
       music: false,
       goodForGroups: false,
       funny: false,
-      goodForCouples: false
+      goodForCouples: false,
+      airConditioning: false,
+      acceptReserve: false,
+      acceptCards: false,
+      goodDrinks: false,
+      openLate: false,
+      outdoorTables: false,
+      parking: false
     }
   }
 

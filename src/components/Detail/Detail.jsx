@@ -24,6 +24,10 @@ function DetailComponent({ data }) {
         <Card className="card">
           <CardContent>
             <Typography gutterBottom variant="h4" component="h2">{ data.title }</Typography>
+
+            <Typography gutterBottom variant="h6" component="h3">Pedido</Typography>
+            <Typography component="p">{data.order}</Typography>
+            <Typography gutterBottom variant="h6" component="h4">Observações</Typography>
             <Typography component="p">{data.observations}</Typography>
             <Ratings data={data} />
             <Convenience data={data} />

@@ -5,7 +5,6 @@ import {RouteContext} from '../contexts/contexts'
 import useFetch from '../hooks/useDataFetch'
 import Loader from './Loader'
 import Stars from  './Starts'
-import formatDate from '../utils/formatDate/formatDate'
 
 function CardHome({ restaurant }) {
   const { _id, title, date, ratings } = restaurant
@@ -25,7 +24,7 @@ function CardHome({ restaurant }) {
             { title }
           </Typography>
           <Typography color="textSecondary" gutterBottom>
-            { formatDate(date) }
+            { date }
           </Typography>
           <Typography component="p">
             <Stars check={ratings} amount={getRating(ratings)} />
