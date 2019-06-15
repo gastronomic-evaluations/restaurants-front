@@ -3,11 +3,11 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { RouteContext } from '../contexts/contexts'
 import Loader from '../components/Loader'
 
-const Home = lazy(() => import('../components/Home'))
-const Create = lazy(() => import('../components/Create'))
-const Edit = lazy(() => import('../components/Edit'))
-const Detail = lazy(() => import('../components/Detail/Detail'))
-const Error404 = lazy(() => import('../components/Error404'))
+const Home = lazy(() => import('pages/Home/Home'))
+const Create = lazy(() => import('pages/Create/Create'))
+const Edit = lazy(() => import('pages/Edit/Edit'))
+const Detail = lazy(() => import('pages/Detail/Detail'))
+const Error404 = lazy(() => import('pages/Error404/Error404'))
 
 
 function getRouterComponent(Component) {

@@ -8,7 +8,7 @@ const Input = ({ name, label, fullWidth, multiline, rows }) => {
     <Field name={name} render={({ field }) => (
       <TextField
         label={label}
-        className="input"
+        className="field"
         fullWidth={fullWidth}
         multiline={multiline}
         rows={rows}

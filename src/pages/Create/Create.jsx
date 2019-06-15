@@ -1,6 +1,7 @@
 import React from 'react'
 
-import AbstractForm from './forms/AbstractForm'
+import AbstractForm from 'components/forms/AbstractForm'
+import './create.scss'
 
 function Home() {
   const initialValues = {
@@ -41,10 +42,8 @@ function Home() {
 
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <AbstractForm method="POST" pathname="/restaurants" initialValues={initialValues} />
-      </header>
+    <div className="create">
+      <AbstractForm method="POST" pathname="/restaurants" initialValues={initialValues} />
     </div>
   )
 }

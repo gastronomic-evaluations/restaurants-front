@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import {Card, CardActionArea, CardContent, Typography} from '@material-ui/core'
+import {CardContent, Typography} from '@material-ui/core'
 
-import {RouteContext} from '../contexts/contexts'
-import useFetch from '../hooks/useDataFetch'
-import Loader from './Loader'
-import Stars from  './Starts'
+import {RouteContext} from 'contexts/contexts'
+import useFetch from 'hooks/useDataFetch'
+import Loader from 'components/Loader'
+import Stars from  'components/Starts'
+import './home.scss'
 
 function CardHome({ restaurant }) {
   const { _id, title, date, ratings } = restaurant
@@ -17,8 +18,8 @@ function CardHome({ restaurant }) {
 
 
   return (
-    <Card className="card">
-      <CardActionArea>
+    <div className="home">
+      <section className="home__card">
         <CardContent onClick={goToDetail}>
           <Typography gutterBottom variant="h5" component="h2">
             { title }
@@ -30,8 +31,8 @@ function CardHome({ restaurant }) {
             <Stars check={ratings} amount={getRating(ratings)} />
           </Typography>
         </CardContent>
-      </CardActionArea>
-    </Card>
+      </section>
+    </div>
   )
 }
 

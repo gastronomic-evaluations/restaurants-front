@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core'
+import React, { useState } from 'react'
+import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Add, Home, ChevronLeft } from '@material-ui/icons'
 
 import Route from './routes/Route'
@@ -10,10 +9,8 @@ function App(){
   const [state, setState] = useState({value: 0})
 
   return (
-    <>
-      <Paper square className="paper">
-        <Route />
-      </Paper>
+    <main className="main">
+      <Route />
       <BottomNavigation
         value={state.value}
         showLabels
@@ -24,7 +21,7 @@ function App(){
         <BottomNavigationAction label="Inicio" icon={<Home />} onClick={() => window.location = '/#/restaurants'} />
         <BottomNavigationAction label="Criar" icon={<Add />} onClick={() => window.location = '/#/restaurants/create'} />
       </BottomNavigation>
-    </>
+    </main>
   )
 }
 
