@@ -21,43 +21,41 @@ function DetailComponent({ data }) {
   const excludeRestautant = () => exclude({id, history})
 
   return (
-    <div className="App">
-      <header className="detail">
-        <div className="detail__card">
-          <Typography gutterBottom variant="h4" component="h2">{title}</Typography>
+    <div className="detail">
+      <div className="detail__content">
+        <Typography gutterBottom variant="h4" component="h2">{title}</Typography>
 
-          <Typography gutterBottom variant="h6" component="h3">Pedido</Typography>
-          <Typography component="p">{order}</Typography>
-          <Typography gutterBottom variant="h6" component="h4">Observações</Typography>
-          <Typography component="p">{observations}</Typography>
+        <Typography gutterBottom variant="h6" component="h3">Pedido</Typography>
+        <Typography component="p">{order}</Typography>
+        <Typography gutterBottom variant="h6" component="h4">Observações</Typography>
+        <Typography component="p">{observations}</Typography>
 
-          <Ratings data={data} />
-          <Convenience data={data} />
-          <MoreInfo data={data} />
-          <Divider className="divider" />
+        <Ratings data={data} />
+        <Convenience data={data} />
+        <MoreInfo data={data} />
+        <Divider className="divider" />
 
-          <div style={style.container}>
-            <Button
-              variant="outlined"
-              size="small"
-              color="secondary"
-              onClick={excludeRestautant}
-              style={style.button}
-            >
-              Excluir
-            </Button>
+        <div style={style.container}>
+          <Button
+            variant="outlined"
+            size="small"
+            color="secondary"
+            onClick={excludeRestautant}
+            style={style.button}
+          >
+            Excluir
+          </Button>
 
-            <Button
-              variant="outlined"
-              size="small"
-              color="primary"
-              onClick={editRestaurant}
-            >
-              Editar
-            </Button>
-          </div>
+          <Button
+            variant="outlined"
+            size="small"
+            color="primary"
+            onClick={editRestaurant}
+          >
+            Editar
+          </Button>
         </div>
-      </header>
+      </div>
     </div>
   )
 }

@@ -40,15 +40,13 @@ function Home() {
   const {data: restaurants, loaded} = useFetch('/restaurants')
   
   return (
-    <div className="App">
-      <header className="App-header">
-        {
-          loaded
-            ? restaurants.map(restaurant => (<CardHome key={restaurant._id} restaurant={restaurant} />))
-            : <Loader />
-        }
-      </header>
-    </div>
+    <>
+      {
+        loaded
+          ? restaurants.map(restaurant => (<CardHome key={restaurant._id} restaurant={restaurant} />))
+          : <Loader />
+      }
+    </>
   )
 }
 
