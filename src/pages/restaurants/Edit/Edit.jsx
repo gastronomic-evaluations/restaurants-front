@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import AbstractForm from 'components/forms/AbstractForm'
 import useFetch from 'hooks/useDataFetch'
 import {RouteContext} from 'contexts/contexts'
+import Form from 'pages/restaurants/Form'
 import './edit.scss'
 
 function Edit() {
@@ -15,7 +16,9 @@ function Edit() {
         method="PUT"
         pathname={`/restaurants/${match.params.id}`}
         initialValues={data}
-      />
+      >
+        <Form />
+      </AbstractForm>
     </div>
   )
 }

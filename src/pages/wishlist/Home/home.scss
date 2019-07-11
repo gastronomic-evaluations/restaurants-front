@@ -1,0 +1,21 @@
+.wishlist {
+  margin: 20px;
+}
+
+.wish {
+  background: #FFFFFF;
+  list-style: none;
+  border-bottom: 1px solid #CCC;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+
+  &__link {
+    color: #000;
+  }
+
+  &__delete {
+    color: #666;
+  }
+}

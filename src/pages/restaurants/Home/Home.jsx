@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import {CardContent, Typography} from '@material-ui/core'
 
 import {RouteContext} from 'contexts/contexts'
 import useFetch from 'hooks/useDataFetch'
 import Loader from 'components/Loader'
 import Stars from  'components/Starts'
+import Add from  'components/Add/Add'
 import './home.scss'
 
 function CardHome({ restaurant }) {
@@ -43,9 +44,11 @@ function Home() {
     <>
       {
         loaded
-          ? restaurants.map(restaurant => (<CardHome key={restaurant._id} restaurant={restaurant} />))
+          ? restaurants.map(restaurant => <CardHome restaurant={restaurant} key={restaurant._id} />)
           : <Loader />
       }
+
+      <Add path="/restaurants/create" />
     </>
   )
 }

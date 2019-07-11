@@ -1,9 +1,11 @@
 import React from 'react'
 
 import AbstractForm from 'components/forms/AbstractForm'
+import Form from '../Form'
+
 import './create.scss'
 
-function Home() {
+function Create() {
   const initialValues = {
     title: '',
     date: '',
@@ -43,9 +45,11 @@ function Home() {
 
   return (
     <div className="create">
-      <AbstractForm method="POST" pathname="/restaurants" initialValues={initialValues} />
+      <AbstractForm method="POST" pathname="/restaurants" initialValues={initialValues}>
+        <Form />
+      </AbstractForm>
     </div>
   )
 }
 
-export default Home
+export default Create

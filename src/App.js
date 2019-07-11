@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
-import { Add, Home, ChevronLeft } from '@material-ui/icons'
+import { EventNote, Fastfood } from '@material-ui/icons'
 
 import Route from './routes/Route'
 import './App.scss'
@@ -17,9 +17,9 @@ function App(){
         className="bottom-navigation"
         onChange={(event, value) => setState({ value }) }
       >
-        <BottomNavigationAction label="Voltar" icon={<ChevronLeft />} onClick={() => window.history.back()} />
-        <BottomNavigationAction label="Inicio" icon={<Home />} onClick={() => window.location = '/#/restaurants'} />
-        <BottomNavigationAction label="Criar" icon={<Add />} onClick={() => window.location = '/#/restaurants/create'} />
+        <BottomNavigationAction label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
+        <BottomNavigationAction label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
+        {/* <BottomNavigationAction label="Perfil" icon={<Person />} onClick={() => window.history.back()} /> */}
       </BottomNavigation>
     </main>
   )
