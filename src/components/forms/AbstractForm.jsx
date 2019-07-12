@@ -7,10 +7,13 @@ import { publish } from '../../services/restaurantService'
 const AbstractForm = ({ method, initialValues, pathname, children }) => {
   const { history } = useContext(RouteContext)
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    await publish({ method, values, pathname })
+  const onSubmit = async (values, { setSubmitting, setErrors }) => {
+    const response = await publish({ method, values, pathname })
 
-    history.goBack()
+    response.hasOwnProperty('errors')
+      ? setErrors(response.errors)
+      : history.goBack()
+
     setSubmitting(false)
   }
 

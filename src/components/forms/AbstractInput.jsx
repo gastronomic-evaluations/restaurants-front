@@ -1,20 +1,26 @@
 import React from 'react'
-import { Field } from 'formik'
+import { Field, ErrorMessage } from 'formik'
 import { TextField } from '@material-ui/core'
 import { string } from 'prop-types'
 
 const Input = ({ name, label, fullWidth, multiline, rows }) => {
   return (
-    <Field name={name} render={({ field }) => (
-      <TextField
-        label={label}
-        className="field"
-        fullWidth={fullWidth}
-        multiline={multiline}
-        rows={rows}
-        inputProps={{...field}}
-      />
-    )} />
+    <>
+      <Field name={name} render={({ field }) => (
+        <TextField
+          label={label}
+          className="field"
+          fullWidth={fullWidth}
+          multiline={multiline}
+          rows={rows}
+          inputProps={{...field}}
+        />
+      )} />
+
+      <ErrorMessage name={name}>
+        { msg => <div className="field--error">{msg}</div> }
+      </ErrorMessage>
+    </>
   )
 }
 
