@@ -1,17 +1,14 @@
-version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
-workflows:
+version: 2
+jobs:
   build:
-    jobs:
-      - cypress/install:
-          environment:
-            NODE_PATH: src/
-          build: 'npm run build'  # run a custom app build step
-      - cypress/run:
-          requires:
-            - cypress/install
-          parallel: true      # split all specs across machines
-          parallelism: 4      # use 4 CircleCI machines to finish quickly
-          group: 'all tests'  # name this group "all tests" on the dashboard
-          start: 'npm start'  # start server before running tests
+    docker:
+      - image: cypress/base:8
+        environment:
+          TERM: xterm
+          PORT: 5001
+          NODE_PATH: src/
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npm run test:ci
