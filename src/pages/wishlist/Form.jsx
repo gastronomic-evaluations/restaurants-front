@@ -8,7 +8,7 @@ function Form() {
     <>
       <AbstractInput name="name" label="Nome do restaurante" />
 
-      <Button className="send" type="submit" variant="contained" color="primary">
+      <Button data-test="save" className="send" type="submit" variant="contained" color="primary">
         Salvar
       </Button>
     </>

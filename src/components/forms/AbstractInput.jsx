@@ -20,11 +20,12 @@ const Input = ({ name, label, fullWidth, multiline, rows }) => {
           multiline={multiline}
           rows={rows}
           inputProps={{...field}}
+          data-test={name}
         />
       )} />
 
       <ErrorMessage name={name}>
-        { msg => <div className="field--error">{msg}</div> }
+        { msg => <div data-test={`${name}-error`} className="field--error">{msg}</div> }
       </ErrorMessage>
     </>
   )
