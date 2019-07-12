@@ -5,13 +5,13 @@ ENV LC_ALL=C.UTF-8 \
     LANGUAGE=en_US.UTF-8 \
     TZ=America/Sao_Paulo
 
-WORKDIR /gastronomic-evaluations-front
+WORKDIR /restaurants-front
 
 ENV PORT=5001
 
 USER node
 
-ENTRYPOINT ["/gastronomic-evaluations-front/docker/entrypoint.sh"]
+ENTRYPOINT ["/restaurants-front/docker/entrypoint.sh"]
 
 CMD ["npm", "run", "start"]
 
