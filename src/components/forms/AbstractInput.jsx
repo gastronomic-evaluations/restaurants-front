@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Field, ErrorMessage } from 'formik'
 import { TextField } from '@material-ui/core'
 import { string } from 'prop-types'
 
+import { FormikContext } from 'contexts/contexts'
+import inputHasErrors from './InputHasErrors'
+
 const Input = ({ name, label, fullWidth, multiline, rows }) => {
+  const { errors, touched } = useContext(FormikContext)
+
   return (
     <>
       <Field name={name} render={({ field }) => (
         <TextField
+          error={inputHasErrors({errors, touched, name })}
           label={label}
           className="field"
           fullWidth={fullWidth}
