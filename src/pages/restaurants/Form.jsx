@@ -1,8 +1,9 @@
 import React from 'react'
-import {Button, Typography, Divider} from '@material-ui/core'
-
+import {Typography, Divider} from '@material-ui/core'
+import ActionButton from  'components/ActionButton/ActionButton'
 import AbstractInput from 'components/forms/AbstractInput'
 import AbstractRadio from 'components/forms/AbstractRadio'
+import { Send } from '@material-ui/icons'
 
 function Form() {
   return (
@@ -54,9 +55,12 @@ function Form() {
 
       <Divider />
 
-      <Button className="send" type="submit" variant="contained" color="primary">
-        Salvar
-      </Button>
+      <ActionButton>
+        <button type="submit">
+          <Send fontSize="small" />
+        </button>
+      </ActionButton>
+      
     </>
   )
 }

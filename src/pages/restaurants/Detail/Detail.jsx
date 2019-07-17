@@ -3,7 +3,7 @@ import { Typography, Divider, Button } from '@material-ui/core'
 
 import useFetch from 'hooks/useDataFetch'
 import { RouteContext } from 'contexts/contexts'
-import Loader from 'components/Loader'
+import Loader from 'components/Loader/Loader'
 import { exclude } from 'services/restaurantService'
 import Ratings from 'components/Detail/Ratings'
 import Convenience from 'components/Detail/Convenience'
@@ -13,10 +13,12 @@ import './detail.scss'
 function DetailComponent({ data }) {
   const {match, history} = useContext(RouteContext)
   const { title, order, observations, _id: id } = data
+
   const style = {
     container: {textAlign: 'right', color: '#999'},
     button: {marginRight: '10px'}
   }
+
   const editRestaurant = () => history.push(`/restaurants/${match.params.id}`)
   const excludeRestautant = () => exclude({id, history})
 

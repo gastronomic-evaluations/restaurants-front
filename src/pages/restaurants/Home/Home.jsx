@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import {CardContent, Typography} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 
 import {RouteContext} from 'contexts/contexts'
 import useFetch from 'hooks/useDataFetch'
-import Loader from 'components/Loader'
+import Loader from 'components/Loader/Loader'
 import Stars from  'components/Starts'
-import Add from  'components/Add/Add'
+import ActionButton from  'components/ActionButton/ActionButton'
 import './home.scss'
 
 function CardHome({ restaurant }) {
@@ -48,7 +49,9 @@ function Home() {
           : <Loader />
       }
 
-      <Add path="/restaurants/create" />
+      <ActionButton>
+        <Link to="/restaurants/create">+</Link>
+      </ActionButton>
     </>
   )
 }

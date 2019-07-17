@@ -1,5 +1,6 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
+import ActionButton from 'components/ActionButton/ActionButton'
+import { Send } from '@material-ui/icons'
 
 import AbstractInput from 'components/forms/AbstractInput'
 
@@ -8,9 +9,11 @@ function Form() {
     <>
       <AbstractInput name="name" label="Nome do restaurante" />
 
-      <Button data-test="save" className="send" type="submit" variant="contained" color="primary">
-        Salvar
-      </Button>
+      <ActionButton>
+        <button type="submit">
+          <Send />
+        </button>
+      </ActionButton>
     </>
   )
 }

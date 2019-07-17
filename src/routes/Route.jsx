@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { RouteContext } from '../contexts/contexts'
-import Loader from '../components/Loader'
+import Loader from '../components/Loader/Loader'
 
 const RestaurantHome = lazy(() => import('pages/restaurants/Home/Home'))
 const RestaurantCreate = lazy(() => import('pages/restaurants/Create/Create'))

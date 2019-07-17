@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from 'hooks/useDataFetch'
-import Loader from 'components/Loader'
-import Add from  'components/Add/Add'
+import Loader from 'components/Loader/Loader'
+import ActionButton from  'components/ActionButton/ActionButton'
 import { Link } from 'react-router-dom'
 import { Delete } from '@material-ui/icons'
 
@@ -35,7 +35,9 @@ function Home() {
           : <Loader />
       }
 
-      <Add path="/wishlist/create" />
+      <ActionButton>
+        <Link to="/wishlist/create">+</Link>
+      </ActionButton>
     </section>
   )
 }
