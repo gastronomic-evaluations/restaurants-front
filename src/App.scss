@@ -13,7 +13,7 @@ button {
 }
 
 .primary-color {
-  color: #3f51b5
+  color: #d13232
 }
 
 .main {
@@ -21,12 +21,17 @@ button {
   text-align: center;
 }
 
-.bottom-navigation {
+.main .bottom-navigation {
   width: 100%;
   position: fixed;
   bottom: 0;
   padding-bottom: 15px;
   border-top: 1px solid #ccc;
+  background-color: #d13232 !important;
+
+  .icon {
+    color: #FFFFFF;
+  }
 }
 
 .field {

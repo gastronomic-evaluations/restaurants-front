@@ -17,8 +17,8 @@ function App(){
         className="bottom-navigation"
         onChange={(event, value) => setState({ value }) }
       >
-        <BottomNavigationAction label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
-        <BottomNavigationAction label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
+        <BottomNavigationAction className="icon" label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
+        <BottomNavigationAction className="icon" label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
         {/* <BottomNavigationAction label="Perfil" icon={<Person />} onClick={() => window.history.back()} /> */}
       </BottomNavigation>
     </main>
