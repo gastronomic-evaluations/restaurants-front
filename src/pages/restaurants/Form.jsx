@@ -56,7 +56,7 @@ function Form() {
       <Divider />
 
       <ActionButton>
-        <button type="submit">
+        <button type="submit" data-test="save">
           <Send fontSize="small" />
         </button>
       </ActionButton>

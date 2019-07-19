@@ -19,8 +19,10 @@ const Input = ({ name, label, fullWidth, multiline, rows }) => {
           fullWidth={fullWidth}
           multiline={multiline}
           rows={rows}
-          inputProps={{...field}}
-          data-test={name}
+          inputProps={{
+            'data-test': name,
+            ...field
+          }}
         />
       )} />
 

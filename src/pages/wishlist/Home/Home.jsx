@@ -35,7 +35,7 @@ function Home() {
           : <Loader />
       }
 
-      <ActionButton>
+      <ActionButton data-test="create">
         <Link to="/wishlist/create">+</Link>
       </ActionButton>
     </section>

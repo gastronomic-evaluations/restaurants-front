@@ -10,7 +10,7 @@ function Form() {
       <AbstractInput name="name" label="Nome do restaurante" />
 
       <ActionButton>
-        <button type="submit">
+        <button type="submit" data-test="save">
           <Send />
         </button>
       </ActionButton>
