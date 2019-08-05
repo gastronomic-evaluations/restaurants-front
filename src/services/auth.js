@@ -1,6 +1,5 @@
-function isAuthenticate() {
-  const token = window.localStorage.getItem('token')
-  return token && token.length > 0
+function isAuthenticated() {
+  return localStorage.getItem('token') !== null;
 }
 
-export { isAuthenticate }
+export { isAuthenticated }
