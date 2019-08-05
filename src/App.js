@@ -19,10 +19,7 @@ function App(){
       >
         <BottomNavigationAction className="icon" label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
         <BottomNavigationAction className="icon" label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
-        <BottomNavigationAction className="icon" label="Sair" icon={<Person />} onClick={() => {
-          window.localStorage.setItem('token', '')
-          window.location = '/#/login'
-        }} />
+        <BottomNavigationAction className="icon" label="Entrar" icon={<Person />} onClick={() => window.location = '/#/login'} />
       </BottomNavigation>
     </main>
   )
