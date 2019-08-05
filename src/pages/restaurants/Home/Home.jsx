@@ -40,7 +40,7 @@ function CardHome({ restaurant }) {
 
 function Home() {
   const {data: restaurants, loaded} = useFetch('/restaurants')
-  
+
   return (
     <>
       {

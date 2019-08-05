@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
-import { EventNote, Fastfood } from '@material-ui/icons'
+import { EventNote, Fastfood, Person } from '@material-ui/icons'
 
 import Route from './routes/Route'
 import './App.scss'
@@ -19,7 +19,10 @@ function App(){
       >
         <BottomNavigationAction className="icon" label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
         <BottomNavigationAction className="icon" label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
-        {/* <BottomNavigationAction label="Perfil" icon={<Person />} onClick={() => window.history.back()} /> */}
+        <BottomNavigationAction className="icon" label="Sair" icon={<Person />} onClick={() => {
+          window.localStorage.setItem('token', '')
+          window.location = '/#/login'
+        }} />
       </BottomNavigation>
     </main>
   )

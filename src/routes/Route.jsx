@@ -3,6 +3,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { RouteContext } from '../contexts/contexts'
 import Loader from '../components/Loader/Loader'
 
+const SignUp = lazy(() => import('pages/Auth/SignUp/SignUp'))
+const Login = lazy(() => import('pages/Auth/Login/Login'))
 const RestaurantHome = lazy(() => import('pages/restaurants/Home/Home'))
 const RestaurantCreate = lazy(() => import('pages/restaurants/Create/Create'))
 const RestaurantEdit = lazy(() => import('pages/restaurants/Edit/Edit'))
@@ -12,8 +14,17 @@ const WishCreate = lazy(() => import('pages/wishlist/Create/Create'))
 const WishEdit = lazy(() => import('pages/wishlist/Edit/Edit'))
 const Error404 = lazy(() => import('pages/Error404/Error404'))
 
+function redirectCondition() {
+  return !window.localStorage.getItem('token')
+    && window.location.hash !== '#/login'
+    && window.location.hash !== '#/signup'
+}
 
 function getRouterComponent(Component) {
+  if( redirectCondition() ) return function() {
+    return <Redirect to='/login' />
+  }
+
   return function getComponent(props) {
     return (
       <RouteContext.Provider value={props}>
@@ -29,6 +40,8 @@ function Routes() {
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route path='/' exact render={() => <Redirect to='/restaurants' />} />
+          <Route path='/signUp' exact component={getRouterComponent(SignUp)} />
+          <Route path='/login' exact component={getRouterComponent(Login)} />
           <Route path='/restaurants' exact component={getRouterComponent(RestaurantHome)} />
           <Route path="/restaurants/create" exact component={getRouterComponent(RestaurantCreate)} />
           <Route path="/restaurants/details/:id" exact component={getRouterComponent(RestaurantDetail)} />

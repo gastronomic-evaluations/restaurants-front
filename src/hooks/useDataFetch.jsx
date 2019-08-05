@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {get} from '../services/restaurantService'
 
 export default path => {
   const [ data, setData ] = useState([])
@@ -8,8 +9,7 @@ export default path => {
     let mounted = true
     
     async function useFetch() {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}${path}`)
-      const data = await response.json()
+      const data = await get(path)
 
       if(mounted) { setData(data) }
       setLoaded(true)

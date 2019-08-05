@@ -22,7 +22,12 @@ function Home() {
   const {data: wishlist, setData, loaded} = useFetch('/wishlist')
 
   function exclude(id) {
-    fetch(`${process.env.REACT_APP_API_URL}/wishlist/${id}`, { method: 'DELETE' })
+    fetch(`${process.env.REACT_APP_API_URL}/wishlist/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${window.localStorage.getItem('token')}`
+      }
+    })
     const data = wishlist.filter(({_id}) => _id !== id)
     setData(data)
   }
