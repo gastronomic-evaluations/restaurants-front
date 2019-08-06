@@ -18,7 +18,7 @@ function SignIn() {
         <AbstractForm method="POST" pathname="/auth" initialValues={initialValues}>
           <img src="icon.svg" className="login__icon" alt="gastronomic evaluations"/>
           <AbstractInput name="email" label="email" />
-          <AbstractInput name="password" label="password" type="password" />
+          <AbstractInput name="password" label="senha" type="password" />
 
           <Link to="/signup" className="login__link">Cadastre-se</Link>
 

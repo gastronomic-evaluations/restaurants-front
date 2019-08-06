@@ -18,9 +18,9 @@ function SignIn() {
         <AbstractForm method="POST" pathname="/signin" initialValues={initialValues}>
           <img src="icon.svg" className="signup__icon" alt="gastronomic evaluations"/>
 
-          <AbstractInput name="name" label="Nome" />
+          <AbstractInput name="name" label="nome" />
           <AbstractInput name="email" label="email" />
-          <AbstractInput name="password" label="password" type="password" />
+          <AbstractInput name="password" label="senha" type="password" />
 
           <ActionButton>
             <button type="submit" data-test="save">
