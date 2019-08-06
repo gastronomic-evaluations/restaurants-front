@@ -13,7 +13,7 @@ const AbstractForm = ({ method, initialValues, pathname, children }) => {
     if (response.hasOwnProperty('errors')) {
       setErrors(response.errors)
     } else {
-      if (pathname === '/signup' || pathname === '/auth') {
+      if (pathname === '/signin' || pathname === '/auth') {
         window.localStorage.setItem('token', response.token)
         window.location = '/#/restaurants'
       } else {

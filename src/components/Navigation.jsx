@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { EventNote, Fastfood, Person } from '@material-ui/icons'
 import { logout } from '../services/auth'

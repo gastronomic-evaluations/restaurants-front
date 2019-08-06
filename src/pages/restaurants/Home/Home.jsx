@@ -7,6 +7,8 @@ import useFetch from 'hooks/useDataFetch'
 import Loader from 'components/Loader/Loader'
 import Stars from  'components/Starts'
 import ActionButton from  'components/ActionButton/ActionButton'
+import Empty from 'components/Empty/Empty'
+
 import './home.scss'
 
 function CardHome({ restaurant }) {
@@ -41,11 +43,17 @@ function CardHome({ restaurant }) {
 function Home() {
   const {data: restaurants, loaded} = useFetch('/restaurants')
 
+  function renderView(restaurants) {
+    return restaurants.length
+      ? restaurants.map(restaurant => <CardHome restaurant={restaurant} key={restaurant._id} />)
+      : <Empty />
+  }
+
   return (
     <>
       {
         loaded
-          ? restaurants.map(restaurant => <CardHome restaurant={restaurant} key={restaurant._id} />)
+          ? renderView(restaurants)
           : <Loader />
       }
 

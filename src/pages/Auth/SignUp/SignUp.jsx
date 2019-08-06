@@ -14,17 +14,21 @@ function SignIn() {
 
   return (
     <section className="signup">
-      <AbstractForm method="POST" pathname="/signin" initialValues={initialValues}>
-        <AbstractInput name="name" label="Nome" />
-        <AbstractInput name="email" label="email" />
-        <AbstractInput name="password" label="password" type="password" />
+      <div className="signup__wrapper">
+        <AbstractForm method="POST" pathname="/signin" initialValues={initialValues}>
+          <img src="icon.svg" className="signup__icon" alt="gastronomic evaluations"/>
 
-        <ActionButton>
-          <button type="submit" data-test="save">
-            <Send />
-          </button>
-        </ActionButton>
-      </AbstractForm>
+          <AbstractInput name="name" label="Nome" />
+          <AbstractInput name="email" label="email" />
+          <AbstractInput name="password" label="password" type="password" />
+
+          <ActionButton>
+            <button type="submit" data-test="save">
+              <Send />
+            </button>
+          </ActionButton>
+        </AbstractForm>
+      </div>
     </section>
   )
 }
