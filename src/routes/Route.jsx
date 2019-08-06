@@ -14,6 +14,7 @@ import Wishlist from 'pages/wishlist/Home/Home'
 import WishCreate from 'pages/wishlist/Create/Create'
 import WishEdit from 'pages/wishlist/Edit/Edit'
 import Error404 from 'pages/Error404/Error404'
+import Navitation from 'components/Navigation'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -22,6 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <RouteContext.Provider value={props}>
           <Component {...props} />
+          <Navitation />
         </RouteContext.Provider>
       ) : (
         <Redirect to={{ pathname: '/login', state: { from: props.location } }} />

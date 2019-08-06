@@ -2,4 +2,8 @@ function isAuthenticated() {
   return localStorage.getItem('token') !== null;
 }
 
-export { isAuthenticated }
+function logout() {
+  localStorage.setItem('token', null);
+}
+
+export { isAuthenticated, logout }
