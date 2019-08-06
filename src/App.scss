@@ -1,3 +1,7 @@
+html, body, #root {
+  height: 100%;
+}
+
 body {
   background: #F5F5F5 !important;
   color: #222;
@@ -19,6 +23,7 @@ button {
 .main {
   padding-bottom: 80px;
   text-align: center;
+  height: 100%;
 }
 
 .main .bottom-navigation {

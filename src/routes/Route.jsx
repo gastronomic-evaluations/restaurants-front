@@ -1,27 +1,36 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { RouteContext } from '../contexts/contexts'
 import Loader from '../components/Loader/Loader'
+import {isAuthenticated} from '../services/auth'
 
-const RestaurantHome = lazy(() => import('pages/restaurants/Home/Home'))
-const RestaurantCreate = lazy(() => import('pages/restaurants/Create/Create'))
-const RestaurantEdit = lazy(() => import('pages/restaurants/Edit/Edit'))
-const RestaurantDetail = lazy(() => import('pages/restaurants/Detail/Detail'))
-const Wishlist = lazy(() => import('pages/wishlist/Home/Home'))
-const WishCreate = lazy(() => import('pages/wishlist/Create/Create'))
-const WishEdit = lazy(() => import('pages/wishlist/Edit/Edit'))
-const Error404 = lazy(() => import('pages/Error404/Error404'))
+import SignUp from 'pages/Auth/SignUp/SignUp'
+import Login from 'pages/Auth/Login/Login'
+import RestaurantHome from 'pages/restaurants/Home/Home'
+import RestaurantCreate from 'pages/restaurants/Create/Create'
+import RestaurantEdit from 'pages/restaurants/Edit/Edit'
+import RestaurantDetail from 'pages/restaurants/Detail/Detail'
+import Wishlist from 'pages/wishlist/Home/Home'
+import WishCreate from 'pages/wishlist/Create/Create'
+import WishEdit from 'pages/wishlist/Edit/Edit'
+import Error404 from 'pages/Error404/Error404'
+import Navitation from 'components/Navigation'
 
-
-function getRouterComponent(Component) {
-  return function getComponent(props) {
-    return (
-      <RouteContext.Provider value={props}>
-        <Component />
-      </RouteContext.Provider>
-    )
-  }
-}
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated() ? (
+        <RouteContext.Provider value={props}>
+          <Component {...props} />
+          <Navitation />
+        </RouteContext.Provider>
+      ) : (
+        <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+      )
+    }
+  />
+);
 
 function Routes() {
   return (
@@ -29,16 +38,18 @@ function Routes() {
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route path='/' exact render={() => <Redirect to='/restaurants' />} />
-          <Route path='/restaurants' exact component={getRouterComponent(RestaurantHome)} />
-          <Route path="/restaurants/create" exact component={getRouterComponent(RestaurantCreate)} />
-          <Route path="/restaurants/details/:id" exact component={getRouterComponent(RestaurantDetail)} />
-          <Route path="/restaurants/:id" exact component={getRouterComponent(RestaurantEdit)} />
+          <Route path='/signUp' exact component={SignUp} />
+          <Route path='/login' exact component={Login} />
+          <PrivateRoute path='/restaurants' exact component={RestaurantHome} />
+          <PrivateRoute path='/restaurants/create' exact component={RestaurantCreate} />
+          <PrivateRoute path='/restaurants/details/:id' exact component={RestaurantDetail} />
+          <PrivateRoute path='/restaurants/:id' exact component={RestaurantEdit} />
 
-          <Route path="/wishlist" exact component={getRouterComponent(Wishlist)} />
-          <Route path="/wishlist/create" exact component={getRouterComponent(WishCreate)} />
-          <Route path="/wishlist/edit/:id" exact component={getRouterComponent(WishEdit)} />
+          <PrivateRoute path='/wishlist' exact component={Wishlist} />
+          <PrivateRoute path='/wishlist/create' exact component={WishCreate} />
+          <PrivateRoute path='/wishlist/edit/:id' exact component={WishEdit} />
 
-          <Route component={getRouterComponent(Error404)} />
+          <Route component={Error404} />
         </Switch>
       </Suspense>
     </Router>

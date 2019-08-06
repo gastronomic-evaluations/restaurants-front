@@ -10,9 +10,16 @@ const AbstractForm = ({ method, initialValues, pathname, children }) => {
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
     const response = await publish({ method, values, pathname })
 
-    response.hasOwnProperty('errors')
-      ? setErrors(response.errors)
-      : history.goBack()
+    if (response.hasOwnProperty('errors')) {
+      setErrors(response.errors)
+    } else {
+      if (pathname === '/signin' || pathname === '/auth') {
+        window.localStorage.setItem('token', response.token)
+        window.location = '/#/restaurants'
+      } else {
+        history.goBack()
+      }
+    }
 
     setSubmitting(false)
   }

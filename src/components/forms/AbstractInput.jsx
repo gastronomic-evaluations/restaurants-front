@@ -6,7 +6,7 @@ import { string } from 'prop-types'
 import { FormikContext } from 'contexts/contexts'
 import inputHasErrors from './InputHasErrors'
 
-const Input = ({ name, label, fullWidth, multiline, rows }) => {
+const Input = ({ name, label, fullWidth, multiline, rows, type }) => {
   const { errors, touched } = useContext(FormikContext)
 
   return (
@@ -19,6 +19,7 @@ const Input = ({ name, label, fullWidth, multiline, rows }) => {
           fullWidth={fullWidth}
           multiline={multiline}
           rows={rows}
+          type={type}
           inputProps={{
             'data-test': name,
             ...field
@@ -36,7 +37,8 @@ const Input = ({ name, label, fullWidth, multiline, rows }) => {
 Input.defaultProps = {
   multiline: false,
   rows: 1,
-  fullWidth: true
+  fullWidth: true,
+  type: 'text',
 }
 
 Input.propTypes = {
