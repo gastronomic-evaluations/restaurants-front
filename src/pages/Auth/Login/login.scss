@@ -4,4 +4,19 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+
+  &__wrapper {
+    margin-top: -75px;
+  }
+
+  &__link {
+    color: #d13232;
+  }
+
+  &__icon {
+    width: 100px;
+    svg: {
+      fill: #FFF;
+    }
+  }
 }
