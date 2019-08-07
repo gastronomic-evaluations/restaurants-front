@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Formik, Form } from 'formik'
 
 import { RouteContext, FormikContext } from '../../contexts/contexts'
-import { publish } from '../../services/restaurantService'
+import { publish } from '../../services/abstractService'
 
 const AbstractForm = ({ method, initialValues, pathname, children }) => {
   const { history } = useContext(RouteContext)

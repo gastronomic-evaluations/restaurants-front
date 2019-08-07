@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {get} from '../services/restaurantService'
+import {get} from '../services/abstractService'
 
 export default path => {
   const [ data, setData ] = useState([])

@@ -4,7 +4,7 @@ import { Typography, Divider, Button } from '@material-ui/core'
 import useFetch from 'hooks/useDataFetch'
 import { RouteContext } from 'contexts/contexts'
 import Loader from 'components/Loader/Loader'
-import { exclude } from 'services/restaurantService'
+import { exclude } from 'services/abstractService'
 import Ratings from 'components/Detail/Ratings'
 import Convenience from 'components/Detail/Convenience'
 import MoreInfo from 'components/Detail/MoreInfo'
@@ -20,7 +20,10 @@ function DetailComponent({ data }) {
   }
 
   const editRestaurant = () => history.push(`/restaurants/${match.params.id}`)
-  const excludeRestautant = () => exclude({id, history})
+  const excludeRestautant = () => {
+    exclude({ id, history, path: '/restaurants' })
+    history.goBack()
+  }
 
   return (
     <div className="detail">

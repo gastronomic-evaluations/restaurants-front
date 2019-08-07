@@ -5,16 +5,17 @@ import ActionButton from  'components/ActionButton/ActionButton'
 import { Link } from 'react-router-dom'
 import { Delete } from '@material-ui/icons'
 import Empty from 'components/Empty/Empty'
+import { exclude } from 'services/abstractService'
 
 import './home.scss'
 
-function CardHome({ wish, exclude }) {
-  const { name, _id } = wish
+function CardHome({ wish, wishlist, setData}) {
+  const { name, _id: id } = wish
 
   return (
     <li className="wish">
-      <Link className="wish__link" to={`/wishlist/edit/${_id}`}>{name}</Link>
-      <Delete className="wish__delete" onClick={() => exclude(_id)} />
+      <Link className="wish__link" to={`/wishlist/edit/${id}`}>{name}</Link>
+      <Delete className="wish__delete" onClick={() =>  exclude({ id, path: '/wishlist', setData, list: wishlist })} />
     </li>
   )
 }
@@ -24,19 +25,8 @@ function Home() {
 
   function renderView(restaurants) {
     return restaurants.length
-      ? wishlist.map(wish =>  <CardHome key={wish._id} exclude={exclude} wish={wish} />)
+      ? wishlist.map(wish =>  <CardHome key={wish._id} setData={setData} wishlist={wishlist} wish={wish} />)
       : <Empty />
-  }
-
-  function exclude(id) {
-    fetch(`${process.env.REACT_APP_API_URL}/wishlist/${id}`, {
-      method: 'DELETE',
-      headers: {
-        authorization: `Bearer ${window.localStorage.getItem('token')}`
-      }
-    })
-    const data = wishlist.filter(({_id}) => _id !== id)
-    setData(data)
   }
   
   return (
