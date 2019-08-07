@@ -14,4 +14,3 @@ USER node
 ENTRYPOINT ["/restaurants-front/docker/entrypoint.sh"]
 
 CMD ["npm", "run", "start"]
-
