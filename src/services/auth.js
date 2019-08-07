@@ -6,4 +6,8 @@ function logout() {
   localStorage.setItem('token', null);
 }
 
-export { isAuthenticated, logout }
+function getToken() {
+  return localStorage.getItem('token')
+}
+
+export { isAuthenticated, logout, getToken }
