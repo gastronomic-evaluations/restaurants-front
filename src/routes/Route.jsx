@@ -40,6 +40,7 @@ function Routes() {
           <Route path='/' exact render={() => <Redirect to='/restaurants' />} />
           <Route path='/signUp' exact component={SignUp} />
           <Route path='/login' exact component={Login} />
+
           <PrivateRoute path='/restaurants' exact component={RestaurantHome} />
           <PrivateRoute path='/restaurants/create' exact component={RestaurantCreate} />
           <PrivateRoute path='/restaurants/details/:id' exact component={RestaurantDetail} />
