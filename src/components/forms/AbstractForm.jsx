@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik'
 
 import { RouteContext, FormikContext } from '../../contexts/contexts'
 import { publish } from '../../services/abstractService'
+import { setLogin } from 'services/auth'
 
 const AbstractForm = ({ method, initialValues, pathname, children }) => {
   const { history } = useContext(RouteContext)
@@ -14,8 +15,7 @@ const AbstractForm = ({ method, initialValues, pathname, children }) => {
       setErrors(response.errors)
     } else {
       if (pathname === '/signin' || pathname === '/auth') {
-        window.localStorage.setItem('token', response.token)
-        window.location = '/#/restaurants'
+        setLogin(response)
       } else {
         history.goBack()
       }

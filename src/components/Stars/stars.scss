@@ -1,0 +1,9 @@
+.starRate {
+  display: inline-block;
+  overflow: hidden;
+  height: 27px;
+
+  &__item {
+    color: #fdbd39;
+  }
+}

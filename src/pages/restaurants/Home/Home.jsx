@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {RouteContext} from 'contexts/contexts'
 import useFetch from 'hooks/useDataFetch'
 import Loader from 'components/Loader/Loader'
-import Stars from  'components/Starts'
+import Stars from  'components/Stars/Stars'
 import ActionButton from  'components/ActionButton/ActionButton'
 import Empty from 'components/Empty/Empty'
 
@@ -31,9 +31,8 @@ function CardHome({ restaurant }) {
           <Typography color="textSecondary" gutterBottom>
             { date }
           </Typography>
-          <Typography component="p">
-            <Stars check={ratings} amount={getRating(ratings)} />
-          </Typography>
+
+          <Stars check={ratings} amount={getRating(ratings)} />
         </CardContent>
       </section>
     </div>

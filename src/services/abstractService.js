@@ -1,6 +1,6 @@
 import { getToken } from './auth'
 
-const { REACT_APP_API_URL } = process.env
+const API = `${process.env.REACT_APP_API_URL}/restaurants/api`
 
 function requestOptions(options = {}) {
   return {
@@ -18,20 +18,20 @@ const publish = async ({ pathname, values, method }) => {
     body: JSON.stringify(values, null, 2)
   }
 
-  const URL = `${REACT_APP_API_URL}${pathname}`
+  const URL = `${API}${pathname}`
   const response = await fetch(URL, requestOptions(options))
   const data = await response.json()
   return data
 }
 
 const get = async (path) => {
-  const response = await fetch(`${REACT_APP_API_URL}${path}`, requestOptions())
+  const response = await fetch(`${API}${path}`, requestOptions())
   const data = await response.json()
   return data
 }
 
 const exclude = async ({ id, path, list = [], setData = () => {} }) => {
-  const URL = `${REACT_APP_API_URL}${path}/${id}`
+  const URL = `${API}${path}/${id}`
   const response = await fetch(URL, requestOptions({ method: 'DELETE' }))
 
   const data = list.filter(({ _id }) => _id !== id)
