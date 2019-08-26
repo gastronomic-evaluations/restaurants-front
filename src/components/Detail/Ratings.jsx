@@ -1,7 +1,7 @@
 import React from 'react'
 import { Divider, Typography } from '@material-ui/core'
 
-import Stars from '../Starts'
+import Stars from '../Stars/Stars'
 
 function Ratings({ data }) {
   const {ratings} = data
@@ -27,7 +27,7 @@ function Ratings({ data }) {
         <Stars check={ratings} amount={price} />
       </Typography>
 
-      <Typography component="p">
+      <Typography component="div">
         <span style={style}>Comida:</span>
         <Stars check={ratings} amount={food} />
       </Typography>

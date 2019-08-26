@@ -1,21 +1,21 @@
 import React from 'react'
 import { StarRate } from '@material-ui/icons'
-import { number, any } from 'prop-types'
+import { number } from 'prop-types'
+import './stars.scss'
 
-const Stars = ({check, amount}) => (
+const Stars = ({amount}) => (
   <>
     {
-      check && Array(Math.floor(amount))
+      Array(Math.floor(amount))
         .fill()
         .map((current, index) => (
-          <StarRate key={index} style={{color: '#fdbd39'}}/>
+          <StarRate key={index} className="starRate__item" />
         ))
     }
   </>
 )
 
 Stars.propTypes = {
-  check: any,
   amount: number.isRequired
 }
 

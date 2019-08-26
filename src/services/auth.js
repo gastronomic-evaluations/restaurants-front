@@ -1,5 +1,5 @@
 function isAuthenticated() {
-  return localStorage.getItem('token') !== null;
+  return getToken() !== null;
 }
 
 function logout() {
@@ -10,4 +10,16 @@ function getToken() {
   return localStorage.getItem('token')
 }
 
-export { isAuthenticated, logout, getToken }
+function setLogin(response) {
+  if( !response.hasOwnProperty('token') ) return false
+
+  window.localStorage.setItem('token', response.token)
+  window.location = '/#/restaurants'
+}
+
+export {
+  isAuthenticated,
+  logout,
+  getToken,
+  setLogin
+}
