@@ -3,7 +3,7 @@ import AbstractInput from 'components/forms/AbstractInput'
 import ActionButton from 'components/ActionButton/ActionButton'
 import { Send } from '@material-ui/icons'
 import AbstractForm from 'components/forms/AbstractForm'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './login.scss'
 
 function SignIn() {
