@@ -25,9 +25,9 @@ function Navigation() {
   };
 
   const logoutModal = () => {
-    window.location = '/#/login'
     logout()
     handleClose()
+    window.location = '/#/login'
   }
 
   return (
