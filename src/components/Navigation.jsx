@@ -60,7 +60,7 @@ function Navigation() {
         className="bottom-navigation"
         onChange={(event, value) => setState({ value }) }
       >
-        <BottomNavigationAction className="icon" label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
+        <BottomNavigationAction className="icon onboarding-restaurants" label="Lugares" icon={<Fastfood />} onClick={() => window.location = '/#/restaurants'} />
         <BottomNavigationAction className="icon" label="Wishlist" icon={<EventNote />} onClick={() => window.location = '/#/wishlist'} />
         <BottomNavigationAction className="icon" label="Sair" icon={<Person />} onClick={handleClickOpen} />
       </BottomNavigation>
