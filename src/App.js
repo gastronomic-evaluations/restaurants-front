@@ -2,18 +2,26 @@ import React from 'react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Joyride from 'react-joyride';
 
-
+import { isNewuser } from './services/onboarding'
 import Route from './routes/Route'
 import './App.scss'
 
 const steps = [
   {
     target: '.onboarding-restaurants',
-    content: 'This is my awesome feature!',
+    content: 'Aqui você pode ver a lista de lugares que você já avaliou!',
+  },
+  {
+    target: '.onboarding-wishlist',
+    content: 'Aqui você pode ver a lista de lugares que você pretende ir!',
+  },
+  {
+    target: '.onboarding-signout',
+    content: 'Clique aqui para sair da sua conta!',
   },
   {
     target: '.onboarding-restaurants__add',
-    content: 'This another awesome feature!',
+    content: 'Clique aqui para avaliar um novo lugar!',
   }
 ]
 
@@ -26,17 +34,17 @@ const theme = createMuiTheme({
 function App(){
   return (
     <MuiThemeProvider theme={theme}>
-      <Joyride
-        steps={steps}
-        continuous={true}
-        showProgress={true}
-        spotlightClicks={true}
-        styles={{
-          options: {
-            primaryColor: theme.palette.primary.dark,
-          }
-        }}
-      />
+      { isNewuser() && (
+        <Joyride
+          steps={steps}
+          continuous={true}
+          styles={{
+            options: {
+              primaryColor: theme.palette.primary.dark,
+            }
+          }}
+        />
+      )}
       <main className="main">
         <Route />
       </main>
