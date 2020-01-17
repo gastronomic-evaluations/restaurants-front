@@ -1,5 +1,14 @@
 import React, { useContext } from 'react'
-import { Typography, Divider, Button } from '@material-ui/core'
+import {
+  Typography,
+  Divider,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,
+  DialogContentText,
+} from '@material-ui/core'
 
 import useFetch from 'hooks/useDataFetch'
 import { RouteContext } from 'contexts/contexts'
@@ -19,6 +28,16 @@ function DetailComponent({ data }) {
     button: {marginRight: '10px'}
   }
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const editRestaurant = () => history.push(`/restaurants/${match.params.id}`)
   const excludeRestautant = () => {
     exclude({ id, history, path: '/restaurants' })
@@ -28,6 +47,27 @@ function DetailComponent({ data }) {
   return (
     <div className="detail">
       <div className="detail__content">
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Confirmação"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Você realmente deseja excluir essa avaliacão?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Fechar
+            </Button>
+            <Button onClick={excludeRestautant} color="primary" autoFocus>
+              Confirmar
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Typography gutterBottom variant="h4" component="h2">{title}</Typography>
 
         <Typography gutterBottom variant="h6" component="h3">Pedido</Typography>
@@ -45,7 +85,7 @@ function DetailComponent({ data }) {
             variant="outlined"
             size="small"
             color="secondary"
-            onClick={excludeRestautant}
+            onClick={handleClickOpen}
             style={style.button}
           >
             Excluir

@@ -2,7 +2,7 @@ import React from 'react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Joyride from 'react-joyride';
 
-import { isNewuser } from './services/onboarding'
+import { isNewuser, setOnboarding } from './services/onboarding'
 import Route from './routes/Route'
 import './App.scss'
 
@@ -45,6 +45,7 @@ function App(){
           }}
         />
       )}
+      { setOnboarding() }
       <main className="main">
         <Route />
       </main>
