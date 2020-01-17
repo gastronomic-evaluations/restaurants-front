@@ -20,6 +20,7 @@ const Input = ({ name, label, fullWidth, multiline, rows, type }) => {
           multiline={multiline}
           rows={rows}
           type={type}
+          variant="outlined"
           inputProps={{
             'data-test': name,
             ...field
