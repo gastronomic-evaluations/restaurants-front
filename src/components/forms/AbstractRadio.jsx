@@ -23,12 +23,14 @@ const AbstractRadio = ({ name, label }) => {
 
   return (
     <FormControlLabel
-      control={
-        <Field name={name} render={({ field }) => (
-          <Switch color="primary" value={name} checked={checked}  {...field}/>
-        )} />
-      }
       label={label}
+      control={
+        <Field name={name}>
+          {({ field }) => (
+            <Switch color="primary" value={name} checked={checked}  {...field}/>
+          )}
+        </Field>
+      }
     />
   )
 }
