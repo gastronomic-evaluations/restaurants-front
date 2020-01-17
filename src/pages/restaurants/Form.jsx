@@ -1,11 +1,27 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import {Typography, Divider} from '@material-ui/core'
 import ActionButton from  'components/ActionButton/ActionButton'
 import AbstractInput from 'components/forms/AbstractInput'
+import AbstractSelect from 'components/forms/AbstractSelect'
 import AbstractRadio from 'components/forms/AbstractRadio'
 import { Send } from '@material-ui/icons'
+import { ratingsOptions } from 'utils/constants'
+
+const useStyles = makeStyles(theme => ({
+  ratingsGrid: {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${2}, 2fr)`,
+    gridGap: theme.spacing(2),
+  },
+  title: {
+    marginTop: theme.spacing(10),
+  }
+}));
 
 function Form() {
+  const { ratingsGrid, title } = useStyles();
+
   return (
     <>
       <AbstractInput name="title" label="Nome do restaurante" />
@@ -17,17 +33,17 @@ function Form() {
       <AbstractInput name="order" label="Pedido" multiline={true} rows={3} />
       <AbstractInput name="observations" label="Observações" multiline={true} rows={5} />
 
-      <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
+      <Typography gutterBottom variant="h6" component="h5" className={title}>
         Notas
       </Typography>
-      <div style={{display: 'flex'}}>
-        <AbstractInput name="ratings.service" label="Serviço" fullWidth={false} />
-        <AbstractInput name="ratings.environment" label="Lugar" fullWidth={false} />
-        <AbstractInput name="ratings.price" label="Preço" fullWidth={false} />
-        <AbstractInput name="ratings.food" label="Comida" fullWidth={false} />
+      <div className={ratingsGrid}>
+        <AbstractSelect name="ratings.service" label="Serviço" options={ratingsOptions} />
+        <AbstractSelect name="ratings.environment" label="Lugar" options={ratingsOptions} />
+        <AbstractSelect name="ratings.price" label="Preço" options={ratingsOptions} />
+        <AbstractSelect name="ratings.food" label="Comida" options={ratingsOptions} />
       </div>
 
-      <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
+      <Typography gutterBottom variant="h6" component="h5" className={title}>
         Recomendações
       </Typography>
 
@@ -35,7 +51,7 @@ function Form() {
       <AbstractInput name="recomendations.neverAsk" label="Nunca pedir" />
       <AbstractRadio name="recomendations.worth" label="Vale a pena?" />
 
-      <Typography gutterBottom variant="h6" component="h5" style={{marginTop:'100px'}}>
+      <Typography gutterBottom variant="h6" component="h5" className={title}>
         Conveniência
       </Typography>
 
