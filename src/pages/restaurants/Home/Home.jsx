@@ -57,7 +57,7 @@ function Home() {
       }
 
       <ActionButton>
-        <Link to="/restaurants/create">+</Link>
+        <Link className="onboarding-restaurants__add" to="/restaurants/create">+</Link>
       </ActionButton>
     </>
   )

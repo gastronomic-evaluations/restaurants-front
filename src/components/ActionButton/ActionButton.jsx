@@ -1,11 +1,14 @@
 import React from 'react'
 import './actionButton.scss'
+import { Slide } from '@material-ui/core'
 
 function ActionButton({ path, children }) {
   return (
-    <div className="action-button">
-      { children }
-    </div>
+    <Slide direction="up" in={true} timeout={2000}>
+      <div className="action-button">
+        { children }
+      </div>
+    </Slide>
   )
 }
 
