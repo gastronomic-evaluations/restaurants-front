@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {CardContent, Typography} from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import {Link} from 'react-router-dom'
 
 import {RouteContext} from 'contexts/contexts'
@@ -8,6 +8,7 @@ import Loader from 'components/Loader/Loader'
 import Stars from  'components/Stars/Stars'
 import ActionButton from  'components/ActionButton/ActionButton'
 import Empty from 'components/Empty/Empty'
+import Container from  'components/Container'
 
 import './home.scss'
 
@@ -20,22 +21,17 @@ function CardHome({ restaurant }) {
     return (food + environment + price + service) / 4
   }
 
-
   return (
-    <div className="home">
-      <section className="home__card">
-        <CardContent onClick={goToDetail}>
-          <Typography gutterBottom variant="h5" component="h2">
-            { title }
-          </Typography>
-          <Typography color="textSecondary" gutterBottom>
-            { date }
-          </Typography>
+    <section onClick={goToDetail} className="home-card">
+      <Typography gutterBottom variant="h5" component="h2">
+        { title }
+      </Typography>
+      <Typography color="textSecondary" gutterBottom>
+        { date }
+      </Typography>
 
-          <Stars check={ratings} amount={getRating(ratings)} />
-        </CardContent>
-      </section>
-    </div>
+      <Stars check={ratings} amount={getRating(ratings)} />
+    </section>
   )
 }
 
@@ -49,7 +45,7 @@ function Home() {
   }
 
   return (
-    <>
+    <Container>
       {
         loaded
           ? renderView(restaurants)
@@ -59,7 +55,7 @@ function Home() {
       <ActionButton>
         <Link className="onboarding-restaurants__add" to="/restaurants/create">+</Link>
       </ActionButton>
-    </>
+    </Container>
   )
 }
 

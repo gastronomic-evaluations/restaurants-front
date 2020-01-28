@@ -1,9 +1,8 @@
 import React from 'react'
 
 import AbstractForm from 'components/forms/AbstractForm'
-import Form from '../Form'
-
-import './create.scss'
+import Form from './Form'
+import Container from 'components/Container'
 
 function Create() {
   const initialValues = {
@@ -44,11 +43,11 @@ function Create() {
 
 
   return (
-    <div className="create">
+    <Container centered>
       <AbstractForm method="POST" pathname="/restaurants" initialValues={initialValues}>
         <Form />
       </AbstractForm>
-    </div>
+    </Container>
   )
 }
 

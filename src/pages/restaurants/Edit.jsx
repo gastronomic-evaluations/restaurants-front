@@ -4,14 +4,14 @@ import AbstractForm from 'components/forms/AbstractForm'
 import useFetch from 'hooks/useDataFetch'
 import {RouteContext} from 'contexts/contexts'
 import Form from 'pages/restaurants/Form'
-import './edit.scss'
+import Container from 'components/Container'
 
 function Edit() {
   const {match} = useContext(RouteContext)
   const {data, loaded} = useFetch(`/restaurants/${match.params.id}`)
 
   return loaded && (
-    <div className="edit">
+    <Container centered>
       <AbstractForm
         method="PUT"
         pathname={`/restaurants/${match.params.id}`}
@@ -19,7 +19,7 @@ function Edit() {
       >
         <Form />
       </AbstractForm>
-    </div>
+    </Container>
   )
 }
 

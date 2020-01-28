@@ -17,7 +17,7 @@ import { exclude } from 'services/abstractService'
 import Ratings from 'components/Detail/Ratings'
 import Convenience from 'components/Detail/Convenience'
 import MoreInfo from 'components/Detail/MoreInfo'
-import './detail.scss'
+import Container from 'components/Container'
 
 function DetailComponent({ data }) {
   const {match, history} = useContext(RouteContext)
@@ -45,7 +45,7 @@ function DetailComponent({ data }) {
   }
 
   return (
-    <div className="detail">
+    <Container centered>
       <div className="detail__content">
         <Dialog
           open={open}
@@ -101,7 +101,7 @@ function DetailComponent({ data }) {
           </Button>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 
