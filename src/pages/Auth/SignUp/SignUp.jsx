@@ -1,6 +1,5 @@
 import React from 'react'
 import AbstractInput from 'components/forms/AbstractInput'
-import { Save } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import AbstractForm from 'components/forms/AbstractForm'
