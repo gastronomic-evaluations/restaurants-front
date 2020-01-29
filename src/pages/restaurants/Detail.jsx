@@ -3,11 +3,6 @@ import {
   Typography,
   Divider,
   Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogActions,
-  DialogContentText,
 } from '@material-ui/core'
 
 import useFetch from 'hooks/useDataFetch'
@@ -17,26 +12,18 @@ import { exclude } from 'services/abstractService'
 import Ratings from 'components/Detail/Ratings'
 import Convenience from 'components/Detail/Convenience'
 import MoreInfo from 'components/Detail/MoreInfo'
-import './detail.scss'
+import Container from 'components/Container'
+import Confirmation from 'components/Modal/Confirmation'
 
 function DetailComponent({ data }) {
   const {match, history} = useContext(RouteContext)
   const { title, order, observations, _id: id } = data
+  const [open, setOpen] = React.useState(false);
 
   const style = {
     container: {textAlign: 'right', color: '#999'},
     button: {marginRight: '10px'}
   }
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const editRestaurant = () => history.push(`/restaurants/${match.params.id}`)
   const excludeRestautant = () => {
@@ -45,29 +32,14 @@ function DetailComponent({ data }) {
   }
 
   return (
-    <div className="detail">
+    <Container centered>
       <div className="detail__content">
-        <Dialog
+        <Confirmation
+          handleClose={() => setOpen(false)}
           open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"Confirmação"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Você realmente deseja excluir essa avaliacão?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Fechar
-            </Button>
-            <Button onClick={excludeRestautant} color="primary" autoFocus>
-              Confirmar
-            </Button>
-          </DialogActions>
-        </Dialog>
+          description="Você realmente deseja excluir essa avaliacão?"
+          action={excludeRestautant}
+        />
         <Typography gutterBottom variant="h4" component="h2">{title}</Typography>
 
         <Typography gutterBottom variant="h6" component="h3">Pedido</Typography>
@@ -85,7 +57,7 @@ function DetailComponent({ data }) {
             variant="outlined"
             size="small"
             color="secondary"
-            onClick={handleClickOpen}
+            onClick={() => setOpen(true)}
             style={style.button}
           >
             Excluir
@@ -101,17 +73,15 @@ function DetailComponent({ data }) {
           </Button>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 
 function Detail() {
-  const {match} = useContext(RouteContext)
-  const {data, loaded} = useFetch(`/restaurants/${match.params.id}`)
+  const { match } = useContext(RouteContext)
+  const { data, loaded } = useFetch(`/restaurants/${match.params.id}`)
   
-  return loaded
-    ? <DetailComponent data={data} />
-    : <Loader />
+  return loaded ? <DetailComponent data={data} /> : <Loader />
 }
 
 export default Detail

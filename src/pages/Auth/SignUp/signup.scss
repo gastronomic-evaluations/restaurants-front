@@ -1,13 +1,10 @@
 .signup {
-  padding: 20px 5%;
+  padding: 0 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-
-  &__wrapper {
-    margin-top: -100px;
-  }
+  text-align: center;
 
   &__icon {
     width: 100px;
