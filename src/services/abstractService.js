@@ -26,6 +26,12 @@ const publish = async ({ pathname, values, method }) => {
 
 const get = async (path) => {
   const response = await fetch(`${API}${path}`, requestOptions())
+
+  if(response.status === 401) {
+    window.location = '/#/login'
+    return []
+  }
+
   const data = await response.json()
   return data
 }
