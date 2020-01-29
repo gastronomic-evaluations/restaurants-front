@@ -1,8 +1,3 @@
-.wishlist {
-  margin: 20px;
-  height: 100%;
-}
-
 .wish {
   background: #FFFFFF;
   list-style: none;
@@ -11,12 +6,4 @@
   text-align: left;
   display: flex;
   justify-content: space-between;
-
-  &__link {
-    color: #000;
-  }
-
-  &__delete {
-    color: #666;
-  }
 }

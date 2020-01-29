@@ -3,17 +3,11 @@ import useFetch from 'hooks/useDataFetch'
 import Loader from 'components/Loader/Loader'
 import ActionButton from  'components/ActionButton/ActionButton'
 import { Link } from 'react-router-dom'
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogActions,
-  DialogContentText,
-} from '@material-ui/core'
 import { Delete } from '@material-ui/icons'
 import Empty from 'components/Empty/Empty'
 import { exclude } from 'services/abstractService'
+import Container from 'components/Container'
+import Confirmation from 'components/Modal/Confirmation'
 
 import './home.scss'
 
@@ -31,29 +25,14 @@ function CardHome({ wish, wishlist, setData}) {
 
   return (
     <li className="wish">
-      <Dialog
+      <Confirmation
+        handleClose={handleClose}
         open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Confirmação"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Você realmente deseja excluir esse item?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Fechar
-          </Button>
-          <Button onClick={() =>  exclude({ id, path: '/wishlist', setData, list: wishlist })} color="primary" autoFocus>
-            Confirmar
-          </Button>
-        </DialogActions>
-      </Dialog>
+        description="Você realmente deseja excluir esse item?"
+        action={ () =>  exclude({ id, path: '/wishlist', setData, list: wishlist }) }
+      />
       <Link className="wish__link" to={`/wishlist/edit/${id}`}>{name}</Link>
-      <Delete className="wish__delete" onClick={handleClickOpen} />
+      <Delete color="action" className="wish__delete" onClick={handleClickOpen} />
     </li>
   )
 }
@@ -68,17 +47,13 @@ function Home() {
   }
   
   return (
-    <section className="wishlist">
-      {
-        loaded
-          ? renderView(wishlist)
-          : <Loader />
-      }
+    <Container>
+      { loaded ? renderView(wishlist) : <Loader /> }
 
       <ActionButton data-test="create">
         <Link to="/wishlist/create">+</Link>
       </ActionButton>
-    </section>
+    </Container>
   )
 }
 

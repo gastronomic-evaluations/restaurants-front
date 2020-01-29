@@ -3,14 +3,10 @@ import {
   Slide,
   BottomNavigation,
   BottomNavigationAction,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogActions,
-  DialogContentText,
-  Button,
 } from '@material-ui/core'
 import { EventNote, Fastfood, Person } from '@material-ui/icons'
+
+import Confirmation from 'components/Modal/Confirmation'
 import { logout } from '../services/auth'
 
 function Navigation() {
@@ -33,27 +29,12 @@ function Navigation() {
 
   return (
     <div>
-      <Dialog
+      <Confirmation
+        handleClose={handleClose}
         open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Confirmação"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Você realmente deseja sair?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Fechar
-          </Button>
-          <Button onClick={logoutModal} color="primary" autoFocus>
-            Confirmar
-          </Button>
-        </DialogActions>
-      </Dialog>
+        description="Você realmente deseja sair?"
+        action={logoutModal}
+      />
       <Slide direction="up" in={true} timeout={2000}>
         <BottomNavigation
           value={state.value}

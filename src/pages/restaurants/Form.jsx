@@ -6,7 +6,7 @@ import AbstractInput from 'components/forms/AbstractInput'
 import AbstractSelect from 'components/forms/AbstractSelect'
 import AbstractRadio from 'components/forms/AbstractRadio'
 import { Send } from '@material-ui/icons'
-import { ratingsOptions } from 'utils/constants'
+import { ratingsOptions } from 'lib/constants'
 
 const useStyles = makeStyles(theme => ({
   ratingsGrid: {
